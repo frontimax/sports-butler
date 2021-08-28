@@ -1,0 +1,16 @@
+{
+  "get": "countries",
+  "parameters": {
+    "name": "Germany"
+  },
+  "errors": [],
+  "results": 1,
+  "response": [
+    {
+      "id": 17,
+      "name": "Germany",
+      "code": "DE",
+      "flag": "https://media.api-sports.io/flags/de.svg"
+    }
+  ]
+}

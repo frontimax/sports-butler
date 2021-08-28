@@ -1,0 +1,26 @@
+{
+  "get": "countries",
+  "parameters": [],
+  "errors": [],
+  "results": 63,
+  "response": [
+    {
+      "id": 1,
+      "name": "Australia",
+      "code": "AU",
+      "flag": "https://media.api-sports.io/flags/au.svg"
+    },
+    {
+      "id": 2,
+      "name": "Asia",
+      "code": "AS",
+      "flag": "https://media.api-sports.io/flags/as.svg"
+    },
+    {
+      "id": 3,
+      "name": "Austria",
+      "code": "AT",
+      "flag": "https://media.api-sports.io/flags/at.svg"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "get": "teams",
+  "parameters": {
+    "id": "39"
+  },
+  "errors": [],
+  "results": 1,
+  "response": [
+    {
+      "id": 39,
+      "name": "Nunawading",
+      "logo": "https://media.api-sports.io/basketball/teams/39.png",
+      "nationnal": false,
+      "country": {
+        "id": 1,
+        "name": "Australia",
+        "code": "AU",
+        "flag": "https://media.api-sports.io/flags/au.svg"
+      }
+    }
+  ]
+}

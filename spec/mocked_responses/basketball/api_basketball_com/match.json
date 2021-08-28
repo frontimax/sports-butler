@@ -1,0 +1,67 @@
+{
+  "get": "games",
+  "parameters": {
+    "id": "126638"
+  },
+  "errors": [],
+  "results": 1,
+  "response": [
+    {
+      "id": 126638,
+      "date": "2021-05-15T17:00:00+00:00",
+      "time": "17:00",
+      "timestamp": 1621098000,
+      "timezone": "UTC",
+      "stage": "",
+      "week": "",
+      "status": {
+        "long": "Game Finished",
+        "short": "FT",
+        "timer": ""
+      },
+      "league": {
+        "id": 13,
+        "name": "NBA W",
+        "type": "League",
+        "season": 2021,
+        "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+      },
+      "country": {
+        "id": 5,
+        "name": "USA",
+        "code": "US",
+        "flag": "https://media.api-sports.io/flags/us.svg"
+      },
+      "teams": {
+        "home": {
+          "id": 175,
+          "name": "Washington Mystics W",
+          "logo": "https://media.api-sports.io/basketball/teams/175.png"
+        },
+        "away": {
+          "id": 163,
+          "name": "Chicago Sky W",
+          "logo": "https://media.api-sports.io/basketball/teams/163.png"
+        }
+      },
+      "scores": {
+        "home": {
+          "quarter_1": 19,
+          "quarter_2": 11,
+          "quarter_3": 10,
+          "quarter_4": 16,
+          "over_time": "",
+          "total": 56
+        },
+        "away": {
+          "quarter_1": 22,
+          "quarter_2": 24,
+          "quarter_3": 11,
+          "quarter_4": 13,
+          "over_time": "",
+          "total": 70
+        }
+      }
+    }
+  ]
+}

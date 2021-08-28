@@ -1,0 +1,34 @@
+{
+  "get": "players",
+  "parameters": {
+    "id": "7190",
+    "season": "2020"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "player": {
+        "id": 7190,
+        "name": "Alan Lima Cariús",
+        "firstname": "Alan",
+        "lastname": "Lima Cariús",
+        "age": 24,
+        "birth": {
+          "date": "1997-04-04",
+          "place": "Petrópolis",
+          "country": "Brazil"
+        },
+        "nationality": "Brazil",
+        "height": "175 cm",
+        "weight": "74 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/7190.png"
+      }
+    }
+  ]
+}
