@@ -1,44 +1,40 @@
-# Sports::Butler
+# Sports Butler
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sports/butler`. To experiment with that code, run `bin/console` for an interactive prompt.
+![Image of Yaktocat](https://www.football-butler.de/wp-content/uploads/2021/03/cropped-cropped-cropped-logo_football_butler_128px_geen02-1.png)
 
-TODO: Delete this and the text above, and describe your gem
+[![Build Status](https://app.travis-ci.com/frontimax/sports-butler.svg?token=kdzGtbwhXCggiYUeL5pd&branch=main&status=errored)](https://travis-ci.com/frontimax/sports-butler)
+[![codecov](https://codecov.io/gh/frontimax/football-butler/branch/main/graph/badge.svg?token=GBV4PK62WC)](https://codecov.io/gh/frontimax/football-butler)
 
-## Installation
+This gem enables API requests against multiple different sports APIs.
 
-Add this line to your application's Gemfile:
+Its the follow-up Gem to [www.football-butler.de](https://www.football-butler.de), which only supported football/soccer.
 
-```ruby
-gem 'sports-butler'
-```
+Currently supported sports:
+- Soccer (aka Football) ***[current default sport]***
+- Basketball
 
-And then execute:
+Currenlty supported APIs (note: you can access any API directly, but supported APIs provide semantic methods to access the given API as a comfort function):
 
-    $ bundle install
+*Soccer (aka Football)*
+- api-football.com ***[current default api]***
+- apifootball.com
+- football-data.org
 
-Or install it yourself as:
-
-    $ gem install sports-butler
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sports-butler. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/sports-butler/blob/master/CODE_OF_CONDUCT.md).
+*Basketball*
+- api-basketball.com ***[current default api]***
 
 
-## License
+To use the API you need an API token, get it for free @
+- https://dashboard.api-football.com/register
+- https://apifootball.com/register
+- http://api.football-data.org/register
+- https://rapidapi.com/api-sports/api/api-basketball/pricing
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
+Depending on you Payment Plan or Subscription you can access international Competitions, Teams, Matches, Scores, Players, Odds, and Standings.
 
-Everyone interacting in the Sports::Butler project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/sports-butler/blob/master/CODE_OF_CONDUCT.md).
+Also see the following Links:
+
+[www.football-butler.de (Offical Gem Homepage)](https://www.football-butler.de)  
+[www.code-butler.de (More Projects & Solutions with Rails & Flutter)](https://www.code-butler.de)  
+[Twitter/code_butler](https://twitter.com/code_butler)
