@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Football
+module Sports
   module Butler
     class ApiBase
       MSG_INVALID_CONFIG  = 'Invalid Configuration, check empty api_token or empty / invalid api_endpoint!'

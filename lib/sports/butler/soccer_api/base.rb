@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Sports
   module Butler
-    module SoccerApis
+    module SoccerApi
       class Base
 
         #attr_accessor :sport, :api
