@@ -1,12 +1,27 @@
 # frozen_string_literal: true
+
+## SOCCER
+require 'sports/butler/soccer_api/base'
+# api_football_com
 require 'sports/butler/soccer_api/api_football_com/countries'
+# football_data_org
+require 'sports/butler/soccer_api/football_data_org/countries'
+# apifootball_com
+require 'sports/butler/soccer_api/apifootball_com/base'
+require 'sports/butler/soccer_api/apifootball_com/countries'
+
 
 module Sports
   module Butler
     class Base
 
+      ENDPOINTS = {
+        countries: [
+                     :countries, :areas
+                   ]
+      }
+
       attr_accessor :sport, :api,:api_class, :sport_class,
-                    #:configuration, :api_endpoint,
                     :countries, :areas
 
       def initialize(sport:, api:)
@@ -16,38 +31,27 @@ module Sports
         @sport_class  = "#{sport.to_s.camelize}Api"
 
         # @configuration = Configuration
-        # @api_token = set_api_token
-        # @api_endpoint = set_api_endpoint
 
         build_endpoint_objects
       end
 
-      # TODO: via Array iteration dynamic!
-      def build_endpoint_objects
-        build_endpoint_countries
-      end
+      private
 
       def scope
         "Sports::Butler::#{sport_class}::#{api_class}"
       end
 
-      def build_endpoint_countries
-        @countries = "#{scope}::Countries".constantize.new(self) if Kernel.const_defined?("#{scope}::Countries")
-        @areas = "#{scope}::Countries".constantize.new(self) if Kernel.const_defined?("#{scope}::Countries")
+      def build_endpoint_objects
+        ENDPOINTS.each do |endpoint, aliases|
+          aliases.each do |alias_name|
+            send("#{alias_name}=", build_endpoint_classes(endpoint.capitalize))
+          end
+        end
       end
 
-      # config.api_token[:soccer][:api_football_com]  = ENV['API_TOKEN_API_DASH_COM']
-      def set_api_token
-        @configuration.api_token[sport][api]
-      rescue
-        return nil
-      end
-
-      # config.api_endpoint[:soccer][:api_football_com]  = ENV['API_TOKEN_API_DASH_COM']
-      def set_api_endpoint
-        @configuration.api_endpoint[sport][api]
-      rescue
-        return nil
+      def build_endpoint_classes(name)
+        # TODO: what if nil? universal error message on all methods (catch undefined method object!)
+        "#{scope}::#{name}".constantize.new(sport, api) if Kernel.const_defined?("#{scope}::#{name}")
       end
     end
   end

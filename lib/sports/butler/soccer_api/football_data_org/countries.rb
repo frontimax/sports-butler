@@ -3,17 +3,15 @@
 module Sports
   module Butler
     module SoccerApi
-      module ApiFootballCom
+      module FootballDataOrg
         class Countries < Sports::Butler::SoccerApi::Base
-          PATH = :countries
+          PATH = :areas
 
-          # /countries
           def all
             api.get(path: PATH)
             api
           end
 
-          # /countries?name={name}
           def by_name(name: , filters: {})
             filters.merge!({ name: name })
 

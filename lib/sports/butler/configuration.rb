@@ -62,7 +62,7 @@ module Sports
           # TODO: sports switch!
           case api
           when :apifootball_com
-            "#{Configuration.api_endpoint[sport][api]}/#{path}&APIkey=#{Configuration.api_token[sport][api]}"
+            "#{Configuration.api_endpoint[sport][api]}?#{path}&APIkey=#{Configuration.api_token[sport][api]}"
           when :football_data_org
             "#{Configuration.api_endpoint[sport][api]}/#{path}"
           when :api_football_com
