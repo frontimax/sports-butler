@@ -14,6 +14,11 @@ module Sports
         :api_basketball_com
       ]
 
+      AVAILABLE_SPORT_API = {
+        soccer: [:football_data_org, :apifootball_com, :api_football_com],
+        basketball: [:api_basketball_com]
+      }
+
       def initialize
         # ???
       end
@@ -92,7 +97,7 @@ module Sports
         end
 
         def valid_sport_api?(sport, api)
-          valid_sport?(sport) && valid_api?(api)
+          AVAILABLE_SPORT_API[sport].any?{|name| name == api}
         end
       end
     end

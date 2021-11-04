@@ -13,6 +13,7 @@ module Sports
           @api = Api.new(sport, api_name)
         end
       end
+
     end
   end
 end
