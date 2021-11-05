@@ -10,6 +10,11 @@ require 'sports/butler/soccer_api/football_data_org/countries'
 require 'sports/butler/soccer_api/apifootball_com/base'
 require 'sports/butler/soccer_api/apifootball_com/countries'
 
+## BASKETBALL
+require 'sports/butler/basketball_api/base'
+# api_basketball_com
+require 'sports/butler/basketball_api/api_basketball_com/countries'
+
 
 module Sports
   module Butler

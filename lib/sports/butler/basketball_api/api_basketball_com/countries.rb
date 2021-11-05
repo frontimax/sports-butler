@@ -2,9 +2,9 @@
 
 module Sports
   module Butler
-    module SoccerApi
+    module BasketballApi
       module ApiBasketballCom
-        class Countries < Sports::Butler::SoccerApi::Base
+        class Countries < Sports::Butler::BasketballApi::Base
           PATH = :countries
 
           # /countries

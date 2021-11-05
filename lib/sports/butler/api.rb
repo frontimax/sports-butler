@@ -29,7 +29,6 @@ module Sports
         # method handling
         @success  = true if response_code == 200
 
-
         @response_processed = process_response(response)
       end
 
@@ -59,6 +58,7 @@ module Sports
                      format: :json
       end
 
+      # class methods!
     end
   end
 end

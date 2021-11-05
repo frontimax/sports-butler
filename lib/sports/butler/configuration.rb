@@ -43,7 +43,7 @@ module Sports
         end
 
         def default_api_hash
-          { soccer: {}, basket_ball: {} }
+          { soccer: {}, basketball: {} }
         end
 
         def set_header_token_name
@@ -52,7 +52,8 @@ module Sports
               football_data_org: 'X-Auth-Token',
               api_football_com: 'x-apisports-key'
             },
-            basket_ball: {
+            basketball: {
+              api_basketball_com: 'x-apisports-key'
             }
           }
         end
@@ -66,20 +67,32 @@ module Sports
         def http_party_url(path, sport, api)
           # TODO: sports switch!
           case api
+
+          # SOCCER
           when :apifootball_com
             "#{Configuration.api_endpoint[sport][api]}?#{path}&APIkey=#{Configuration.api_token[sport][api]}"
           when :football_data_org
             "#{Configuration.api_endpoint[sport][api]}/#{path}"
           when :api_football_com
             "#{Configuration.api_endpoint[sport][api]}/#{path}"
+
+          # BASKETBALL
+          when :api_basketball_com
+            "#{Configuration.api_endpoint[sport][api]}/#{path}"
           end
         end
 
         def http_party_headers(sport, api)
           result = case api
+
+                   # SOCCER
                    when :apifootball_com
                      {}
                    when :football_data_org, :api_football_com
+                     { Configuration.header_token_name[sport][api] => Configuration.api_token[sport][api] }
+
+                   # BASKETBALL
+                   when :api_basketball_com
                      { Configuration.header_token_name[sport][api] => Configuration.api_token[sport][api] }
                    end
 
