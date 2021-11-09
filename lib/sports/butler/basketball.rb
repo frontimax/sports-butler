@@ -5,7 +5,7 @@ module Sports
   module Butler
     class Basketball < Sports::Butler::Base
 
-      def initialize(sport:, api:)
+      def initialize(sport:, api_name:)
         super
       end
 

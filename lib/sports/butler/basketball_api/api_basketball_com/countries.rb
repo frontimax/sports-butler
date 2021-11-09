@@ -4,14 +4,7 @@ module Sports
   module Butler
     module BasketballApi
       module ApiBasketballCom
-        class Countries < Sports::Butler::BasketballApi::Base
-          PATH = :countries
-
-          # /countries
-          def all
-            api.get(path: PATH)
-            api
-          end
+        class Countries < Sports::Butler::BasketballApi::Countries
 
           # /countries?name={name}
           def by_name(name: , filters: {})

@@ -13,11 +13,9 @@ module Sports
     DEFAULT_API   = :api_football_com
 
     class << self
-      def new(sport: DEFAULT_SPORT, api: DEFAULT_API)
-        if Sports::Butler::Configuration.valid_sport_api?(sport, api)
-          "Sports::Butler::#{sport.to_s.capitalize}"
-            .constantize
-            .new(sport: sport, api: api)
+      def new(sport: DEFAULT_SPORT, api_name: DEFAULT_API)
+        if Sports::Butler::Configuration.valid_sport_api?(sport, api_name)
+          "Sports::Butler::#{sport.to_s.capitalize}".constantize.new(sport: sport, api_name: api_name)
         else
           return text_error_sport_api
         end

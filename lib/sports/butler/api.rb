@@ -7,11 +7,11 @@ module Sports
     class Api < ApiBase
 
       attr_accessor :response, :response_processed, :success, :errors, :response_code,
-      :sport, :api
+      :sport, :api_name
 
-      def initialize(sport, api)
+      def initialize(sport, api_name)
         @sport  = sport
-        @api    = api
+        @api_name    = api_name
 
         @response = nil
         @success  = false
@@ -33,8 +33,8 @@ module Sports
       end
 
       def process_http_party(path, filters)
-        headers = Configuration.http_party_headers(sport, api)
-        url     = Configuration.http_party_url(path, sport, api)
+        headers = Configuration.http_party_headers(sport, api_name)
+        url     = Configuration.http_party_url(path, sport, api_name)
         query   = filters || {}
         http_party_get(url, headers, query)
       end

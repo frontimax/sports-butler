@@ -64,36 +64,36 @@ module Sports
             !Configuration.api_name_valid?(Configuration.api_name)
         end
 
-        def http_party_url(path, sport, api)
+        def http_party_url(path, sport, api_name)
           # TODO: sports switch!
-          case api
+          case api_name
 
           # SOCCER
           when :apifootball_com
-            "#{Configuration.api_endpoint[sport][api]}?#{path}&APIkey=#{Configuration.api_token[sport][api]}"
+            "#{Configuration.api_endpoint[sport][api_name]}?#{path}&APIkey=#{Configuration.api_token[sport][api_name]}"
           when :football_data_org
-            "#{Configuration.api_endpoint[sport][api]}/#{path}"
+            "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
           when :api_football_com
-            "#{Configuration.api_endpoint[sport][api]}/#{path}"
+            "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
 
           # BASKETBALL
           when :api_basketball_com
-            "#{Configuration.api_endpoint[sport][api]}/#{path}"
+            "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
           end
         end
 
-        def http_party_headers(sport, api)
-          result = case api
+        def http_party_headers(sport, api_name)
+          result = case api_name
 
                    # SOCCER
                    when :apifootball_com
                      {}
                    when :football_data_org, :api_football_com
-                     { Configuration.header_token_name[sport][api] => Configuration.api_token[sport][api] }
+                     { Configuration.header_token_name[sport][api_name] => Configuration.api_token[sport][api_name] }
 
                    # BASKETBALL
                    when :api_basketball_com
-                     { Configuration.header_token_name[sport][api] => Configuration.api_token[sport][api] }
+                     { Configuration.header_token_name[sport][api_name] => Configuration.api_token[sport][api_name] }
                    end
 
           result.merge!(Configuration.header_additional)
@@ -105,12 +105,12 @@ module Sports
           AVAILABLE_SPORTS.include?(sport.to_sym)
         end
 
-        def valid_api?(api)
-          AVAILABLE_APIS.include?(api.to_sym)
+        def valid_api?(api_name)
+          AVAILABLE_APIS.include?(api_name.to_sym)
         end
 
-        def valid_sport_api?(sport, api)
-          AVAILABLE_SPORT_API[sport].any?{|name| name == api}
+        def valid_sport_api?(sport, api_name)
+          AVAILABLE_SPORT_API[sport].any?{|name| name == api_name}
         end
       end
     end

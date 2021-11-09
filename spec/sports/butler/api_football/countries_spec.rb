@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Sports::Butler::Countries do
+RSpec.describe Sports::Butler::SoccerApi::ApiFootball::Countries do
   before do
     Sports::Butler::Configuration.reconfigure(
       api_endpoint: Sports::Butler::Configuration::API_URL_API_FOOTBALL,
