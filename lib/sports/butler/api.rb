@@ -57,8 +57,6 @@ module Sports
                      query: query,
                      format: :json
       end
-
-      # class methods!
     end
   end
 end

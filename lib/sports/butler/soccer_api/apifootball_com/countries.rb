@@ -9,6 +9,10 @@ module Sports
             :get_countries
           end
 
+          def build_path(action)
+            "action=#{action}"
+          end
+
           # def by_name(name: , filters: {})
           #   filters.merge!({ name: name })
           #

@@ -1,113 +1,55 @@
 # frozen_string_literal: true
 
-RSpec.describe Sports::Butler::SoccerApi::ApiFootball::Countries do
+RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
   before do
-    Sports::Butler::Configuration.reconfigure(
-      api_endpoint: Sports::Butler::Configuration::API_URL_API_FOOTBALL,
-      api_name: :api_football_com
-    )
+    Sports::Butler::Configuration.configure do |config|
+      config.api_token = { soccer: {}, basketball: {} }
+      config.api_token[:soccer][:api_football_com]  = 'my_dummy_token'
+
+      config.api_endpoint = { soccer: {}, basketball: {} }
+      config.api_endpoint[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
+    end
 
     stubs_countries_api_dash
   end
 
   after do
-    Sports::Butler::Configuration.reset
-    Sports::Butler::Configuration.reconfigure(api_token: 'my_dummy_token')
-  end
-
-  describe 'when by_id' do
-    it 'returns one country' do
-      response = described_class.by_id(id: 2002)
-
-      expect(response).to be_a(Hash)
-      expect(response['message']).to eq( "Method 'by_id' is not supported for the endpoint 'Countries' by this API: api_football_com")
-    end
-  end
-
-  describe 'when by_code' do
-    it 'returns one country' do
-      response = described_class.by_code(code: 'AL')
-
-      expect(response).to be_a(Array)
-      expect(response).to match_array(response_area_api_dash)
-    end
+    #Sports::Butler::Configuration.reset
+    #Sports::Butler::Configuration.reconfigure(api_token: 'my_dummy_token')
   end
 
   describe 'when all' do
     it 'returns all countries' do
-      response = described_class.all
+      api = Sports::Butler::Api.new(:soccer, :api_football_com)
+      endpoint = described_class.new(sport: :soccer, api_name: :api_football_com, api: api).all
 
-      expect(response).to be_a(Array)
-      expect(response).to match_array(response_areas_api_dash)
-    end
-
-    it 'returns all countries with result param :default' do
-      response = described_class.all(result: :default)
-
-      expect(response).to be_a(HTTParty::Response)
-      expect(response.parsed_response).to be_a(Hash)
-      expect(response.parsed_response).to include(response_areas_all_api_dash.stringify_keys)
-    end
-  end
-
-  describe 'when by_name' do
-    it 'returns one country by name' do
-      response = described_class.by_name(name: 'Albania')
-
-      expect(response).to be_a(Array)
-      expect(response).to match_array(response_area_api_dash)
-    end
-
-    it 'returns no country when unknown name' do
-      response = described_class.by_name(name: 'Absurdistan')
-
-      expect(response).to be_a(Array)
-      expect(response).to be_empty
-    end
-  end
-
-  describe 'when search_by_name' do
-    it 'returns one countries by search' do
-      response = described_class.search_by_name(name: 'Alb')
-
-      expect(response).to be_a(Array)
-      expect(response).to match_array(response_area_api_dash)
-    end
-  end
-
-  describe 'without api token' do
-    before do
-      Sports::Butler::Configuration.reconfigure(api_token: nil)
-    end
-
-    it 'returns invalid_config_result' do
-      Sports::Butler::Configuration.reconfigure(api_token: '')
-      response = described_class.by_name(name: 'Albania')
-
-      expect(response).to be_a(Hash)
-      expect(response['message']).to eq(Sports::Butler::Base::MSG_INVALID_CONFIG)
+      expect(endpoint).to be_a(Sports::Butler::Api)
+      expect(endpoint.response).to be_a(HTTParty::Response)
+      expect(endpoint.response.parsed_response).to be_a(Hash)
+      expect(endpoint.response.parsed_response['response']).to match_array(response_areas_api_dash)
     end
   end
 end
 
 def stubs_countries_api_dash
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint}/countries/2002")
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries/2002")
     .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint}/countries?name=Absurdistan")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?name=Absurdistan")
     .to_return(status: 200, body: get_mocked_response('leagues_missing_name.json', :api_football))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint}/countries?name=Albania")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?name=Albania")
     .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint}/countries?search=Alb")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?search=Alb")
     .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
 
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint}/countries?code=AL")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?code=AL")
     .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint}/countries")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries")
     .to_return(status: 200, body: get_mocked_response('countries.json', :api_football))
 end
 

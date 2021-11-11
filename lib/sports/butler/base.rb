@@ -28,17 +28,13 @@ module Sports
   module Butler
     class Base
 
-      ENDPOINTS = [
-        :countries, :competitions
-      ]
-
       ALIASES = {
         areas: :countries,
         leagues: :competitions
       }
 
       attr_accessor :sport, :api_name, :api_class, :sport_class,
-                    :api, :endpoint
+                    :endpoints, :available_endpoints
 
       def initialize(sport:, api_name:)
         @sport        = sport
@@ -46,27 +42,32 @@ module Sports
         @api_class    = api_name.to_s.camelize
         @sport_class  = "#{sport.to_s.camelize}Api"
 
-        build_api_object
-        #build_endpoint_objects
+        @endpoints    = {}
+
+        @available_endpoints  = get_available_endpoints
       end
 
       def method_missing(method, *args, &block)
         endpoint_name = eval_endpoint_name(method)
-        if endpoint_name.present? && Kernel.const_defined?("#{scope}::#{endpoint_name.capitalize}")
-          @endpoint = build_endpoint_classes(endpoint_name.capitalize)
+        if endpoint_name.present?
+          @endpoints[method].present? ?
+            @endpoints[method] : @endpoints[method] = build_endpoint_classes(endpoint_name.capitalize)
         else
+          # TODO: error class with own method_missing!
           raise endpoint_not_available(method)
         end
       end
 
       private
 
+      # TODO! all files of dir > classes & methods!
+      def get_available_endpoints
+        []
+      end
+
       def eval_endpoint_name(endpoint_name)
-        if ENDPOINTS.include?(endpoint_name)
-          endpoint_name
-        elsif ALIASES[endpoint_name].present?
-          ALIASES[endpoint_name]
-        end
+        endpoint = ALIASES[endpoint_name].present? ? ALIASES[endpoint_name] : endpoint_name
+        Kernel.const_defined?("#{scope}::#{endpoint.capitalize}") ? endpoint : nil
       end
 
       def scope
@@ -74,11 +75,11 @@ module Sports
       end
 
       def build_api_object
-        @api = Api.new(sport, api_name)
+        Api.new(sport, api_name)
       end
 
       def build_endpoint_classes(name)
-        "#{scope}::#{name}".constantize.new(sport: sport, api_name: api_name, api: api)
+        "#{scope}::#{name}".constantize.new(sport: sport, api_name: api_name, api: build_api_object)
       end
 
       def endpoint_not_available(name)

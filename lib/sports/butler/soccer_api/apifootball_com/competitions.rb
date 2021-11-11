@@ -6,6 +6,10 @@ module Sports
       module ApifootballCom
         class Competitions < Sports::Butler::SoccerApi::Competitions
 
+          def build_path(action)
+            "action=#{action}"
+          end
+
           def path
             :get_leagues
           end
