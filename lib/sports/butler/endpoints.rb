@@ -2,6 +2,10 @@
 module Sports
   module Butler
     class Endpoints
+      require 'sports/butler/shared/all_sports'
+
+      include Sports::Butler::Shared::AllSports
+
       attr_accessor :sport, :api_name, :api
 
       def initialize(sport:, api_name:, api:)
@@ -10,7 +14,7 @@ module Sports
         @api      = api
       end
 
-      def build_path(action)
+      def build_path(_action)
         path
       end
     end

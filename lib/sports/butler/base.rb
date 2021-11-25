@@ -24,6 +24,7 @@ require 'sports/butler/basketball_api/competitions'
 require 'sports/butler/basketball_api/api_basketball_com/countries'
 require 'sports/butler/basketball_api/api_basketball_com/competitions'
 
+
 module Sports
   module Butler
     class Base

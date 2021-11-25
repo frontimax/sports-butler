@@ -44,7 +44,7 @@ module Sports
           error_message(response['message'])
         else
           #Configuration.http_party_response(response)
-          response
+          response.parsed_response
         end
       end
 

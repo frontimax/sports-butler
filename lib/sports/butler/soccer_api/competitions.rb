@@ -6,11 +6,6 @@ module Sports
         def path
           :competitions
         end
-
-        def all()
-          api.get(path: build_path(path))
-          api
-        end
       end
     end
   end

@@ -13,13 +13,6 @@ module Sports
             "action=#{action}"
           end
 
-          # def by_name(name: , filters: {})
-          #   filters.merge!({ name: name })
-          #
-          #   api.get(path: build_path(PATH), filters: filters)
-          #   api
-          # end
-
         end
       end
     end
