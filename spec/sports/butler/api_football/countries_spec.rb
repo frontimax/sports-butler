@@ -13,6 +13,8 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
     stubs_countries_api_dash
   end
 
+  let(:api) { Sports::Butler::Api.new(:soccer, :api_football_com) }
+
   after do
     #Sports::Butler::Configuration.reset
     #Sports::Butler::Configuration.reconfigure(api_token: 'my_dummy_token')
@@ -20,7 +22,6 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
 
   describe 'when all' do
     it 'returns all countries' do
-      api = Sports::Butler::Api.new(:soccer, :api_football_com)
       endpoint = described_class.new(sport: :soccer, api_name: :api_football_com, api: api).all
 
       expect(endpoint).to be_a(Sports::Butler::Api)
@@ -29,24 +30,21 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
       expect(endpoint.response.parsed_response['response']).to match_array(response_areas_api_dash)
     end
   end
+
+  describe 'when #by_name' do
+    it 'returns Albania' do
+      endpoint = described_class.new(sport: :soccer, api_name: :api_football_com, api: api).by_name(name: 'Albania')
+
+      expect(endpoint).to be_a(Sports::Butler::Api)
+      expect(endpoint.response).to be_a(HTTParty::Response)
+      expect(endpoint.response.parsed_response).to be_a(Hash)
+      expect(endpoint.response.parsed_response['response']).to match_array(response_area_api_dash)
+    end
+  end
 end
 
 def stubs_countries_api_dash
-
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries/2002")
-    .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
-
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?name=Absurdistan")
-    .to_return(status: 200, body: get_mocked_response('leagues_missing_name.json', :api_football))
-
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?name=Albania")
-    .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
-
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?search=Alb")
-    .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
-
-
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?code=AL")
     .to_return(status: 200, body: get_mocked_response('country.json', :api_football))
 
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries")
@@ -120,6 +118,19 @@ def response_areas_api_dash
       "parentAreaId": 2267,
       "parentArea": "World"
     }.with_indifferent_access,
+    {
+      "id": 2002,
+      "name": "Albania",
+      "countryCode": "ALB",
+      "ensignUrl": "null",
+      "parentAreaId": 2077,
+      "parentArea": "Europe"
+    }.with_indifferent_access
+  ]
+end
+
+def response_area_api_dash
+  [
     {
       "id": 2002,
       "name": "Albania",

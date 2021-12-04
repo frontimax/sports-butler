@@ -18,7 +18,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Countries do
     #Sports::Butler::Configuration.reconfigure(api_token: 'my_dummy_token')
   end
 
-  describe 'when all' do
+  describe 'when #all' do
     it 'returns all countries' do
       api = Sports::Butler::Api.new(:soccer, :apifootball_com)
       endpoint = described_class.new(sport: :soccer, api_name: :apifootball_com, api: api).all
@@ -29,11 +29,26 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Countries do
       expect(endpoint.response.parsed_response).to match_array(response_areas_apifootball)
     end
   end
+
+  describe 'when #by_name' do
+    it 'returns England' do
+      api = Sports::Butler::Api.new(:soccer, :apifootball_com)
+      endpoint = described_class.new(sport: :soccer, api_name: :apifootball_com, api: api).by_name(name: 'England')
+
+      expect(endpoint).to be_a(Sports::Butler::Api)
+      expect(endpoint.response).to be_a(HTTParty::Response)
+      expect(endpoint.response.parsed_response).to be_a(Array)
+      expect(endpoint.response.parsed_response).to match_array(response_area_apifootball)
+    end
+  end
 end
 
 def stubs_countries_apifootball
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:apifootball_com]}/?APIkey=my_dummy_token&action=get_countries")
     .to_return(status: 200, body: get_mocked_response('countries.json', :apifootball))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:apifootball_com]}/?APIkey=my_dummy_token&action=get_countries&name=England")
+    .to_return(status: 200, body: get_mocked_response('country.json', :apifootball))
 end
 
 def response_area_api_dash
@@ -58,5 +73,15 @@ def response_areas_apifootball
       "country_name": "France",
       "country_logo": "https://apiv2.apifootball.com/badges/logo_country/46_france.png"
     }.with_indifferent_access
+  ]
+end
+
+def response_area_apifootball
+  [
+    {
+      "country_id": "41",
+      "country_name": "England",
+      "country_logo": "https://apiv2.apifootball.com/badges/logo_country/41_england.png"
+    }.with_indifferent_access,
   ]
 end

@@ -7,7 +7,7 @@ module Sports
     class Api < ApiBase
 
       attr_accessor :response, :response_processed, :success, :errors, :response_code,
-      :sport, :api_name
+                    :sport, :api_name
 
       def initialize(sport, api_name)
         @sport  = sport
