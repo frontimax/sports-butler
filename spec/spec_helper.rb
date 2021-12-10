@@ -15,10 +15,13 @@ require "sports/butler"
 require "byebug"
 require "rails"
 require "active_support/all"
+#require 'rspec/rails'
 
 require 'httparty'
 require 'webmock/rspec'
 include WebMock #  WebMock::API
+
+Dir["#{Dir.pwd}/spec/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -37,8 +40,8 @@ RSpec.configure do |config|
   end
 end
 
-def get_mocked_response(file, api_name, value_if_file_not_found = false)
-  File.read(File.join(File.dirname(__FILE__), "mocked_responses/#{api_name}/", file))
+def get_mocked_response(file, sport, api_name, value_if_file_not_found = false)
+  File.read(File.join(File.dirname(__FILE__),  "mocked_responses/#{sport}/#{api_name}/", file))
 rescue Errno::ENOENT => e
   raise e if value_if_file_not_found == false
   value_if_file_not_found

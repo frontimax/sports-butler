@@ -110,7 +110,7 @@ module Sports
         end
 
         def valid_sport_api?(sport, api_name)
-          AVAILABLE_SPORT_API[sport].any?{|name| name == api_name}
+          AVAILABLE_SPORT_API[sport]&.any?{|name| name == api_name}
         end
       end
     end

@@ -17,15 +17,12 @@ module Sports
         if Sports::Butler::Configuration.valid_sport_api?(sport, api_name)
           "Sports::Butler::#{sport.to_s.capitalize}".constantize.new(sport: sport, api_name: api_name)
         else
-          return text_error_sport_api
+          text_error_sport_api
         end
-      rescue StandardError => _e
-        return text_error_sport_api
       end
 
-      # TODO! add old logic from fb
-      def get(path:, filters: {})
-        Api.get(path: path, filters: filters)
+      def get(url:, filters: {})
+        Api.get(url: url, filters: filters)
       end
 
       private
@@ -33,7 +30,7 @@ module Sports
       def text_error_sport_api
         text  = "Invalid sport / api parameter. "
         text += "Available sports: #{Sports::Butler::Configuration::AVAILABLE_SPORTS.join(', ')}. "
-        text += "Available apis: #{Sports::Butler::Configuration::AVAILABLE_APIS.join(', ')} "
+        text += "Available apis: #{Sports::Butler::Configuration::AVAILABLE_APIS.join(', ')}"
         text
       end
     end

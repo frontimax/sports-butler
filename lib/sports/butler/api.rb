@@ -10,8 +10,8 @@ module Sports
                     :sport, :api_name
 
       def initialize(sport, api_name)
-        @sport  = sport
-        @api_name    = api_name
+        @sport    = sport
+        @api_name = api_name
 
         @response = nil
         @success  = false
@@ -56,6 +56,17 @@ module Sports
                      headers: headers,
                      query: query,
                      format: :json
+      end
+
+      class << self
+        def get(url:, filters: {}, headers: {})
+          query   = filters || {}
+
+          HTTParty.get "#{url}",
+                       headers: headers,
+                       query: query,
+                       format: :json
+        end
       end
     end
   end
