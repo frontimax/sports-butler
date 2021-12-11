@@ -7,6 +7,7 @@ module Sports
           [:all]
         end
 
+        # TODO: enable later with second basketball api as parent method
         # def path
         #   :competitions
         # end

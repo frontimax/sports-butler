@@ -50,17 +50,15 @@ RSpec.describe Sports::Butler do
   end
 
   describe 'when unsupported endpoint klass' do
-    # it 'returns Albania' do
-    #   endpoint = Sports::Butler::SoccerApi::ApiFootballCom::Countries.
-    #     new(sport: :soccer, api_name: :api_football_com, api: api).
-    #     by_phone(name: 'Albania')
-    #
-    #   expect(endpoint).to be_a(Sports::Butler::Api)
-    #   expect(endpoint.response).to be_a(HTTParty::Response)
-    #   expect(endpoint.response.parsed_response).to be_a(Hash)
-    #   #debugger
-    #   expect(endpoint['message']).to eq("The Endpoint 'Predictions' is not supported by this API: football_data_org")
-    # end
+    it 'returns error' do
+      butler = Sports::Butler.new(sport: :soccer, api_name: :api_football_com)
+
+      expect(butler).to be_a(Sports::Butler::Soccer)
+      expect { butler.bazinga }.to raise_error { |error|
+        expect(error.message)
+          .to eq("NOT AVAILABLE: the endpoint 'bazinga' is not available for this sport/api combination.")
+      }
+    end
   end
 end
 

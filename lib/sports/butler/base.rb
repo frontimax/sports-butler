@@ -11,7 +11,6 @@ require 'sports/butler/soccer_api/api_football_com/competitions'
 require 'sports/butler/soccer_api/football_data_org/countries'
 require 'sports/butler/soccer_api/football_data_org/competitions'
 # apifootball_com
-require 'sports/butler/soccer_api/apifootball_com/base'
 require 'sports/butler/soccer_api/apifootball_com/countries'
 require 'sports/butler/soccer_api/apifootball_com/competitions'
 
@@ -84,7 +83,7 @@ module Sports
       end
 
       def endpoint_not_available(name)
-        "NOT AVAILABLE: the endpoint '#{name}' is not available for this sport/api combination. API"
+        "NOT AVAILABLE: the endpoint '#{name}' is not available for this sport/api combination."
       end
     end
   end
