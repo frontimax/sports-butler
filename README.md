@@ -38,3 +38,80 @@ Also see the following Links:
 [www.football-butler.de (Offical Gem Homepage)](https://www.football-butler.de)  
 [www.code-butler.de (More Projects & Solutions with Rails & Flutter)](https://www.code-butler.de)  
 [Twitter/code_butler](https://twitter.com/code_butler)
+
+# Available Endpoints
+## Countries
+
+    butler = Sports::Butler.new()
+    butler.countries
+
+### Aliases
+
+    areas
+
+### Methods
+
+| Method | Params required |
+| ---------------|----------------|
+| all | - | |
+| by_name | name: String |
+
+### APIs Soccer
+
+| API | methods available |
+| ---------------|----------------|
+| api_football_com | all, by_name |
+| apifootball_com | all, by_name |
+| football_data_org | all, by_name |
+
+### APIs Basketball
+
+| API | methods available |
+| ---------------|----------------|
+| api_basketball_com | :all, :by_name |
+
+Examples:
+
+    butler.countries.all
+    butler.countries.by_name(name: 'Germany')
+
+
+## Competitions
+
+    butler = Sports::Butler.new()
+    butler.competitions
+
+### Aliases
+
+    leagues
+
+### Methods
+
+| Method | Params required |
+| ---------------|----------------|
+| all | - | |
+| by_name | name: String |
+
+### APIs Soccer
+
+| API | methods available |
+| ---------------|----------------|
+| api_football_com | all |
+| apifootball_com | all |
+| football_data_org | all |
+
+### APIs Basketball
+
+| API | methods available |
+| ---------------|----------------|
+| api_basketball_com | :all |
+
+Examples:
+
+    butler.competitions.all
+    butler.competitions.by_name(name: 'Bundesliga')
+
+
+
+
+

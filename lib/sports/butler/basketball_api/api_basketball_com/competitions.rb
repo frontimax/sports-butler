@@ -2,10 +2,12 @@
 
 module Sports
   module Butler
-    module SoccerApi
+    module BasketballApi
       module ApiBasketballCom
-        class Competitions < Sports::Butler::SoccerApi::Competitions
-
+        class Competitions < Sports::Butler::BasketballApi::Competitions
+          def path
+            :leagues
+          end
 
         end
       end

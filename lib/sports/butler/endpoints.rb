@@ -17,6 +17,10 @@ module Sports
       def build_path(_action)
         path
       end
+
+      def error_missing_endpoint_method(meth)
+        "The method '#{meth}' is not available for endpoint '#{self.class.name.demodulize}' in API #{self.api_name}."
+      end
     end
   end
 end

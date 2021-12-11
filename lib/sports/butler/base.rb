@@ -35,7 +35,7 @@ module Sports
       }
 
       attr_accessor :sport, :api_name, :api_class, :sport_class,
-                    :endpoints, :available_endpoints
+                    :endpoints, :available_endpoint_methods
 
       def initialize(sport:, api_name:)
         @sport        = sport
@@ -45,7 +45,7 @@ module Sports
 
         @endpoints    = {}
 
-        @available_endpoints  = get_available_endpoints
+        @available_endpoint_methods  = get_available_endpoint_methods
       end
 
       def method_missing(method, *args, &block)
@@ -62,7 +62,7 @@ module Sports
       private
 
       # TODO! all files of dir > classes & methods!
-      def get_available_endpoints
+      def get_available_endpoint_methods
         []
       end
 
