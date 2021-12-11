@@ -5,12 +5,9 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Competitions < Sports::Butler::SoccerApi::Competitions
-
           def path
             :leagues
           end
-
-
         end
       end
     end

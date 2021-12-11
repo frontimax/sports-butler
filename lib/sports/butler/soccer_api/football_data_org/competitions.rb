@@ -5,8 +5,9 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class Competitions < Sports::Butler::SoccerApi::Competitions
-
-
+          def available_endpoints
+            [:all]
+          end
         end
       end
     end

@@ -3,6 +3,10 @@ module Sports
   module Butler
     module BasketballApi
       class Competitions < Sports::Butler::BasketballApi::Base
+        def available_endpoints
+          [:all, :by_name]
+        end
+
 
         def path
           :competitions
