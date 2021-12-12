@@ -9,6 +9,12 @@ gemspec
 gem "nokogiri", ">= 1.11.4"
 gem "actionpack", ">= 6.1.3.2"
 
+
+# https://github.com/tj/terminal-table
+gem 'terminal-table', '>= 3.0.2'
+# https://github.com/flori/term-ansicolor
+gem 'term-ansicolor', '>= 1.7.1'
+
 group :test do
   gem 'rspec-rails', '= 5.0.1'
   gem 'rubocop-rspec', '= 1.44.1'

@@ -5,6 +5,11 @@ module Sports
   module Butler
     class Basketball < Sports::Butler::Base
 
+      ENDPOINTS = [
+        :countries,
+        :competitions
+      ]
+
       def initialize(sport:, api_name:)
         super
       end

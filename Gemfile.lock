@@ -124,7 +124,14 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.3)
+    sync (0.5.0)
+    term-ansicolor (1.7.1)
+      tins (~> 1.0)
+    terminal-table (3.0.2)
+      unicode-display_width (>= 1.1.1, < 3)
     thor (1.1.0)
+    tins (1.29.1)
+      sync
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
@@ -148,6 +155,8 @@ DEPENDENCIES
   rubocop-rspec (= 1.44.1)
   simplecov (>= 0.21.2)
   sports-butler!
+  term-ansicolor (>= 1.7.1)
+  terminal-table (>= 3.0.2)
   webmock (>= 3.9.3)
 
 BUNDLED WITH
