@@ -18,6 +18,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Competitions do
   describe 'when #by_name' do
     it_behaves_like 'when error_missing_endpoint', :by_name, { name: 'Bundesliga' }
   end
+
+  describe 'when #by_id' do
+    it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
+  end
 end
 
 def stubs_competitions_apifootball_com

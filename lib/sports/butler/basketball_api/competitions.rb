@@ -4,7 +4,7 @@ module Sports
     module BasketballApi
       class Competitions < Sports::Butler::BasketballApi::Base
         def available_endpoint_methods
-          [:all]
+          [:all, :by_id]
         end
 
         # TODO: enable later with second basketball api as parent method

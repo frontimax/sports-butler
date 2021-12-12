@@ -5,6 +5,9 @@ module Sports
     module BasketballApi
       module ApiBasketballCom
         class Countries < Sports::Butler::BasketballApi::Countries
+          def available_endpoint_methods
+            [:all, :by_name]
+          end
         end
       end
     end

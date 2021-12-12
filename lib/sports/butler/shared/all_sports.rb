@@ -17,6 +17,15 @@ module Sports
           api.get(path: build_path(path), filters: filters)
           api
         end
+
+        def by_id(id: , filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ id: id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
       end
     end
   end

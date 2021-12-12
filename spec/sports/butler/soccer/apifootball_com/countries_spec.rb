@@ -20,6 +20,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Countries do
     it_behaves_like 'when #by_name', 'England',
                     :response_country_one_apifootball_com, :parsed_response
   end
+
+  describe 'when #by_id' do
+    it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
+  end
 end
 
 def stubs_countries_apifootball_com

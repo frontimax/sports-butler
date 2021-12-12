@@ -20,6 +20,11 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Countries do
     it_behaves_like 'when #by_name', 'Albania',
                     :response_countries_one_football_data_org, :stringify_keys
   end
+
+  describe 'when #by_id' do
+    it_behaves_like 'when #by_id', 2002,
+                    :response_countries_one_football_data_org, :stringify_keys
+  end
 end
 
 def stubs_countries_football_data_org

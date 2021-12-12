@@ -1,0 +1,59 @@
+{
+  "get": "countries",
+  "parameters": {
+    "code": "AL"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "id": 18,
+      "name": "Liga A",
+      "type": "League",
+      "logo": "https://media.api-sports.io/basketball/leagues/18.png",
+      "country": {
+        "id": 6,
+        "name": "Argentina",
+        "code": "AR",
+        "flag": "https://media.api-sports.io/flags/ar.svg"
+      },
+      "seasons": [
+        {
+          "season": "2019-2020",
+          "start": "2019-11-10",
+          "end": "2020-04-30"
+        },
+        {
+          "season": "2018-2019",
+          "start": "2018-12-05",
+          "end": "2019-05-28"
+        },
+        {
+          "season": "2017-2018",
+          "start": "2017-11-29",
+          "end": "2018-06-23"
+        },
+        {
+          "season": "2016-2017",
+          "start": "2016-09-23",
+          "end": "2017-07-16"
+        },
+        {
+          "season": "2021-2022",
+          "start": "2021-11-03",
+          "end": "2022-03-13"
+        },
+        {
+          "season": "2020-2021",
+          "start": "2020-11-04",
+          "end": "2021-05-15"
+        }
+      ]
+    }
+  ]
+}
+

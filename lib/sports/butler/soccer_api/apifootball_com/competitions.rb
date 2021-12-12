@@ -6,6 +6,11 @@ module Sports
       module ApifootballCom
         class Competitions < Sports::Butler::SoccerApi::Competitions
 
+          def available_endpoint_methods
+            [:all]
+          end
+
+
           def build_path(action)
             "action=#{action}"
           end

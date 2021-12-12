@@ -5,6 +5,11 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Countries < Sports::Butler::SoccerApi::Countries
+
+          def available_endpoint_methods
+            [:all, :by_name]
+          end
+
         end
       end
     end
