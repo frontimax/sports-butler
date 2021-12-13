@@ -46,7 +46,7 @@ module Sports
             row_hash = {}
             row_hash[:available_endpoint_methods] = []
             rows_apis = []
-            rows_meths = []
+
 
             print white, "#{idx_endpoint}. #{endpoint}\n"
 
@@ -61,7 +61,7 @@ module Sports
             end
 
             rows_meths = []
-            row_hash[:available_endpoint_methods].each do |available_endpoint_method|
+            row_hash[:available_endpoint_methods].each.with_index(1) do |available_endpoint_method, idx_available|
               yes_no = []
               meth_params = []
               api_names.each.with_index(1) do |api_name, idx_api_name|
@@ -72,7 +72,7 @@ module Sports
 
                 if available_endpoint_methods.include?(available_endpoint_method)
                   p = butler.countries.method(available_endpoint_method).parameters
-                  res = p.present? ? p.flatten : '-'
+                  res = p.present? ? p : 'none'
                   meth_params << res
                 else
                   meth_params << '-'
@@ -84,6 +84,7 @@ module Sports
 
               rows_meths << [available_endpoint_method] + yes_no
               rows_meths << [''] + meth_params
+              rows_meths << :separator unless idx_available == row_hash[:available_endpoint_methods].size
             end
 
             table = Terminal::Table.new rows: rows_meths

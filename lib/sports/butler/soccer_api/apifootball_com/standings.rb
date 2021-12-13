@@ -4,20 +4,15 @@ module Sports
   module Butler
     module SoccerApi
       module ApifootballCom
-        class Countries < Sports::Butler::SoccerApi::Countries
-
-          def available_endpoint_methods
-            [:all]
-          end
-
-          def path
-            :get_countries
-          end
+        class Standings < Sports::Butler::SoccerApi::Standings
 
           def build_path(action)
             "action=#{action}"
           end
 
+          def path
+            :get_standings
+          end
         end
       end
     end

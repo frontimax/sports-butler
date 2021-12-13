@@ -4,16 +4,23 @@
 require 'sports/butler/soccer_api/base'
 require 'sports/butler/soccer_api/countries'
 require 'sports/butler/soccer_api/competitions'
+require 'sports/butler/soccer_api/matches'
+require 'sports/butler/soccer_api/standings'
 # api_football_com
 require 'sports/butler/soccer_api/api_football_com/countries'
 require 'sports/butler/soccer_api/api_football_com/competitions'
+require 'sports/butler/soccer_api/api_football_com/matches'
+require 'sports/butler/soccer_api/api_football_com/standings'
 # football_data_org
 require 'sports/butler/soccer_api/football_data_org/countries'
 require 'sports/butler/soccer_api/football_data_org/competitions'
+require 'sports/butler/soccer_api/football_data_org/matches'
+require 'sports/butler/soccer_api/football_data_org/standings'
 # apifootball_com
 require 'sports/butler/soccer_api/apifootball_com/countries'
 require 'sports/butler/soccer_api/apifootball_com/competitions'
-
+require 'sports/butler/soccer_api/apifootball_com/matches'
+require 'sports/butler/soccer_api/apifootball_com/standings'
 
 ## BASKETBALL
 require 'sports/butler/basketball_api/base'
@@ -30,7 +37,9 @@ module Sports
 
       ALIASES = {
         areas: :countries,
-        leagues: :competitions
+        leagues: :competitions,
+        events: :matches,
+        fixtures: :matches
       }
 
       attr_accessor :sport, :api_name, :api_class, :sport_class,

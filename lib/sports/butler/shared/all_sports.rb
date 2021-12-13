@@ -3,6 +3,7 @@ module Sports
     module Shared
       module AllSports
 
+        # shared endpoints (countries, matches, competitions ...)
         def all
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
@@ -26,17 +27,14 @@ module Sports
           api
         end
 
-        # countries
-        #  def by_code(code:, result: api_switch_result, filters: {})
-        #           api_switch_method(__method__, { code: code, result: result, filters: filters })
-        #         end
-        #
-        #         def search_by_name(name:, result: api_switch_result, filters: {})
-        #           api_switch_method(__method__, { name: name, result: result, filters: filters })
-        #         end
-        #
-        # competitions
-        #
+        # standings
+        def by_competition(competition_id:, filters:)
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ competition_id: competition_id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
       end
     end
   end

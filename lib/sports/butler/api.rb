@@ -48,6 +48,10 @@ module Sports
         end
       end
 
+      def error_message(error)
+        { message: error }.with_indifferent_access
+      end
+
       def http_party_get(url, headers, query)
         # TODO: remove DEV!
         puts "http_party_get: #{url} #{headers} #{query}"

@@ -17,8 +17,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Countries do
   end
 
   describe 'when #by_name' do
-    it_behaves_like 'when #by_name', 'England',
-                    :response_country_one_apifootball_com, :parsed_response
+    it_behaves_like 'when error_missing_endpoint', :by_name, { name: 'England' }
   end
 
   describe 'when #by_id' do
