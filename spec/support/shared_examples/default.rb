@@ -13,10 +13,10 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
     expect(result).to be_a(Sports::Butler::Api)
     expect(result.response).to be_a(HTTParty::Response)
     expect(result.response.parsed_response).to be_a(response_type)
-    
+
     case mode
     when :parsed_response
-      expect(result.response.parsed_response).to match_array(match)
+      expect(result.respongpse.parsed_response).to match_array(match)
     when :response
       expect(result.response.parsed_response['response']).to match_array(match)
     when :stringify_keys
