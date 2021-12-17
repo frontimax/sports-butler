@@ -33,10 +33,6 @@ def stubs_competitions_api_football_com
     .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
 end
 
-def aaa
-  :api_football_com
-end
-
 def response_competitions_one_api_football_com
   [
     {

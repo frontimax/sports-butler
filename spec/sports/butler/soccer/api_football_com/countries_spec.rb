@@ -32,10 +32,6 @@ def stubs_countries_api_football_com
     .to_return(status: 200, body: get_mocked_response('countries.json', sport, api_name))
 end
 
-def aaa
-  :api_football_com
-end
-
 def response_countries_one_api_football_com
   [
     {

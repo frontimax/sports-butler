@@ -29,10 +29,6 @@ def stubs_competitions_apifootball_com
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 end
 
-def aaa
-  :apifootball_com
-end
-
 def response_competitions_all_apifootball_com
   [
     {

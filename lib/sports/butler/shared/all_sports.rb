@@ -28,7 +28,7 @@ module Sports
         end
 
         # standings
-        def by_competition(competition_id:, filters:)
+        def by_competition(competition_id:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
           filters.merge!({ competition_id: competition_id })

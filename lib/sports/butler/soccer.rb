@@ -8,7 +8,9 @@ module Sports
       ENDPOINTS = [
         :countries,
         :competitions,
-        :matches
+        :matches,
+        :teams,
+        :players
       ]
 
       def initialize(sport:, api_name:)

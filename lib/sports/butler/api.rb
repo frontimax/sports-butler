@@ -7,7 +7,7 @@ module Sports
     class Api < ApiBase
 
       attr_accessor :response, :response_processed, :success, :errors, :response_code,
-                    :sport, :api_name
+                    :sport, :api_name, :url, :headers, :query
 
       def initialize(sport, api_name)
         @sport    = sport
@@ -33,10 +33,10 @@ module Sports
       end
 
       def process_http_party(path, filters)
-        headers = Configuration.http_party_headers(sport, api_name)
-        url     = Configuration.http_party_url(path, sport, api_name)
-        query   = filters || {}
-        http_party_get(url, headers, query)
+        @headers  = Configuration.http_party_headers(sport, api_name)
+        @url      = Configuration.http_party_url(path, sport, api_name)
+        @query    = filters || {}
+        http_party_get
       end
 
       def process_response(response)
@@ -52,10 +52,7 @@ module Sports
         { message: error }.with_indifferent_access
       end
 
-      def http_party_get(url, headers, query)
-        # TODO: remove DEV!
-        puts "http_party_get: #{url} #{headers} #{query}"
-
+      def http_party_get
         HTTParty.get "#{url}",
                      headers: headers,
                      query: query,
