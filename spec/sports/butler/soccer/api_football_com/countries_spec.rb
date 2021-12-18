@@ -22,6 +22,11 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
   describe 'when #by_id' do
     it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
   end
+
+  describe 'when #search_by_name' do
+    it_behaves_like 'when #search_by_name', 'Alb',
+                    :response_countries_one_api_football_com
+  end
 end
 
 def stubs_countries_api_football_com
@@ -30,6 +35,9 @@ def stubs_countries_api_football_com
 
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries")
     .to_return(status: 200, body: get_mocked_response('countries.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?name=Alb")
+    .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 end
 
 def response_countries_one_api_football_com

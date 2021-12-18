@@ -4,7 +4,7 @@ module Sports
     module SoccerApi
       class Competitions < Sports::Butler::SoccerApi::Base
         def available_endpoint_methods
-          [:all, :by_id]
+          [:all, :by_id, :search_by_name]
         end
 
         def path

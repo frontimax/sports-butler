@@ -5,6 +5,9 @@ module Sports
     module SoccerApi
       module ApifootballCom
         class Players < Sports::Butler::SoccerApi::Players
+          def available_endpoint_methods
+            [:by_id]
+          end
 
           def build_path(action)
             "action=#{action}"

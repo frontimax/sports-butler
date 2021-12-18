@@ -5,6 +5,9 @@ module Sports
   module Butler
     module BasketballApi
       class Base < Sports::Butler::Endpoints
+        def method_missing(method, *args, &block)
+          return error_missing_endpoint_method(method)
+        end
       end
     end
   end

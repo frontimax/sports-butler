@@ -23,6 +23,11 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Competitions do
     it_behaves_like 'when #by_id', 78,
                     :response_competitions_one_api_football_com
   end
+
+  describe 'when #search_by_name' do
+    it_behaves_like 'when #search_by_name', 'Bundes',
+                    :response_competitions_one_api_football_com
+  end
 end
 
 def stubs_competitions_api_football_com
@@ -30,6 +35,9 @@ def stubs_competitions_api_football_com
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?id=78")
+    .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?name=Bundes")
     .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
 end
 

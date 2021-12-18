@@ -15,6 +15,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Players do
     it_behaves_like 'when #by_id', 4068429598,
                     :response_players_one_apifootball_com, :parsed_response
   end
+
+  describe 'when #by_id_and_season' do
+    it_behaves_like 'when error_missing_endpoint', :by_id_and_season, { id: 1, season: '2019' }
+  end
 end
 
 def stubs_players_apifootball_com

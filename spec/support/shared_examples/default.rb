@@ -42,5 +42,17 @@ shared_examples 'when #by_id' do |id, compare, mode = :response|
 end
 
 shared_examples 'when #by_competition' do |id, compare, mode = :response|
-  it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition, params: { competition_id: id }, mode: mode
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition, params: { competition_id: id },
+                  mode: mode
 end
+
+shared_examples 'when #search_by_name' do |name, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :search_by_name, params: { name: name },
+                  mode: mode
+end
+
+shared_examples 'when #by_id_and_season' do |id, season, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_id_and_season,
+                  params: { id: id, season: season }, mode: mode
+end
+
