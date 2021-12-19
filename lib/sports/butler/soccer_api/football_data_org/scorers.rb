@@ -4,8 +4,7 @@ module Sports
   module Butler
     module SoccerApi
       module FootballDataOrg
-        class Standings < Sports::Butler::SoccerApi::Standings
-
+        class Scorers < Sports::Butler::SoccerApi::Scorers
           def available_endpoint_methods
             [:by_competition]
           end

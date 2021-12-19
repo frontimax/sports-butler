@@ -10,7 +10,11 @@ module Sports
         :competitions,
         :matches,
         :teams,
-        :players
+        :players,
+        :head_to_head,
+        :lineups,
+        :odds,
+        :scorers
       ]
 
       def initialize(sport:, api_name:)

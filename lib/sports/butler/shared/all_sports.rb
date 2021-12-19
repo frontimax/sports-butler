@@ -27,11 +27,19 @@ module Sports
           api
         end
 
-        # standings
-        def by_competition(competition_id:, filters: {})
+        def by_match(id: , filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!({ competition_id: competition_id })
+          filters.merge!({ id: id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
+        # standings
+        def by_competition(id:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ competition_id: id })
           api.get(path: build_path(path), filters: filters)
           api
         end
