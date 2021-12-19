@@ -14,8 +14,18 @@ module Sports
         :head_to_head,
         :lineups,
         :odds,
-        :scorers
+        :scorers,
+        :standings,
+        :coachs
       ]
+      # injuries
+      # predictions
+      # sidelineds
+      # statistics
+      # timezones
+      # transfers
+      # trophies
+      # venues
 
       def initialize(sport:, api_name:)
         super

@@ -86,6 +86,18 @@ shared_examples 'when #by_match_from_to' do |id, from, to, compare, mode = :resp
                   mode: mode
 end
 
+shared_examples 'when #by_team' do |id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team,
+                  params: { id: id },
+                  mode: mode
+end
+
+shared_examples 'when #by_team_name' do |name, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team,
+                  params: { team: name },
+                  mode: mode
+end
+
 shared_examples 'when #by_teams' do |team_id, second_team_id, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_teams,
                   params: { team_id: team_id, second_team_id: second_team_id },

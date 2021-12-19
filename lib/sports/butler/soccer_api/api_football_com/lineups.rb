@@ -4,7 +4,7 @@ module Sports
   module Butler
     module SoccerApi
       module ApiFootballCom
-        class Lineups < Sports::Butler::SoccerApi::HeadToHead
+        class Lineups < Sports::Butler::SoccerApi::Lineups
           def path
             'fixtures/lineups'
           end

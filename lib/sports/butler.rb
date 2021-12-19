@@ -47,13 +47,20 @@ module Sports
             row_hash[:available_endpoint_methods] = []
             rows_apis = []
 
-
-            print white, "#{idx_endpoint}. #{endpoint}\n"
+            aliases = Sports::Butler::Base::ALIASES.map{ |key, value| key if value == endpoint }.compact
+            print white, "#{idx_endpoint}. #{endpoint} [ Aliases: #{aliases.present? ? aliases.join(', ') : '-'} ]\n"
 
             # get all methods from all apis
-            api_names.each.with_index(1) do |api_name, idx_api_name|
+            api_names.each.with_index(1) do |api_name, _idx_api_name|
               butler = Sports::Butler.new(sport: sport, api_name: api_name)
-              available_endpoint_methods = butler.send(endpoint).available_endpoint_methods
+
+              available_endpoint_methods = []
+              # TODO: better solution then rescue! twice!!
+              begin
+                available_endpoint_methods = butler.send(endpoint).available_endpoint_methods
+              rescue StandardError
+              end
+
               row_hash[:available_endpoint_methods] += available_endpoint_methods
               row_hash[:available_endpoint_methods].uniq!
 
@@ -66,21 +73,24 @@ module Sports
               meth_params = []
               api_names.each.with_index(1) do |api_name, idx_api_name|
                 butler = Sports::Butler.new(sport: sport, api_name: api_name)
-                available_endpoint_methods = butler.send(endpoint).available_endpoint_methods
+
+                available_endpoint_methods = []
+                begin
+                  available_endpoint_methods = butler.send(endpoint).available_endpoint_methods
+                rescue StandardError
+                end
+
                 res = available_endpoint_methods.include?(available_endpoint_method) ? 'YES' : '-'
                 yes_no << res
 
                 if available_endpoint_methods.include?(available_endpoint_method)
-                  p = butler.countries.method(available_endpoint_method).parameters
+                  p = butler.send(endpoint).method(available_endpoint_method).parameters
                   res = p.present? ? p : 'none'
                   meth_params << res
                 else
                   meth_params << '-'
                 end
-
               end
-
-              # butler.countries.method(:by_name).parameters
 
               rows_meths << [available_endpoint_method] + yes_no
               rows_meths << [''] + meth_params

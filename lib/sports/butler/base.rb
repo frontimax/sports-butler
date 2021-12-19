@@ -1,59 +1,34 @@
 # frozen_string_literal: true
 
 ## SOCCER
-require 'sports/butler/soccer_api/base'
-require 'sports/butler/soccer_api/countries'
-require 'sports/butler/soccer_api/competitions'
-require 'sports/butler/soccer_api/matches'
-require 'sports/butler/soccer_api/standings'
-require 'sports/butler/soccer_api/teams'
-require 'sports/butler/soccer_api/players'
-require 'sports/butler/soccer_api/head_to_head'
-require 'sports/butler/soccer_api/lineups'
-require 'sports/butler/soccer_api/odds'
-require 'sports/butler/soccer_api/scorers'
+Dir.glob(File.expand_path("../soccer_api/*.rb", __FILE__)).each do |file|
+  require file
+end
+
 # api_football_com
-require 'sports/butler/soccer_api/api_football_com/countries'
-require 'sports/butler/soccer_api/api_football_com/competitions'
-require 'sports/butler/soccer_api/api_football_com/matches'
-require 'sports/butler/soccer_api/api_football_com/standings'
-require 'sports/butler/soccer_api/api_football_com/teams'
-require 'sports/butler/soccer_api/api_football_com/players'
-require 'sports/butler/soccer_api/api_football_com/head_to_head'
-require 'sports/butler/soccer_api/api_football_com/lineups'
-require 'sports/butler/soccer_api/api_football_com/odds'
-require 'sports/butler/soccer_api/api_football_com/scorers'
+Dir.glob(File.expand_path("../soccer_api/api_football_com/*.rb", __FILE__)).each do |file|
+  require file
+end
+
 # football_data_org
-require 'sports/butler/soccer_api/football_data_org/countries'
-require 'sports/butler/soccer_api/football_data_org/competitions'
-require 'sports/butler/soccer_api/football_data_org/matches'
-require 'sports/butler/soccer_api/football_data_org/standings'
-require 'sports/butler/soccer_api/football_data_org/teams'
-require 'sports/butler/soccer_api/football_data_org/players'
-require 'sports/butler/soccer_api/football_data_org/head_to_head'
-require 'sports/butler/soccer_api/football_data_org/lineups'
-require 'sports/butler/soccer_api/football_data_org/odds'
-require 'sports/butler/soccer_api/football_data_org/scorers'
+Dir.glob(File.expand_path("../soccer_api/football_data_org/*.rb", __FILE__)).each do |file|
+  require file
+end
+
 # apifootball_com
-require 'sports/butler/soccer_api/apifootball_com/countries'
-require 'sports/butler/soccer_api/apifootball_com/competitions'
-require 'sports/butler/soccer_api/apifootball_com/matches'
-require 'sports/butler/soccer_api/apifootball_com/standings'
-require 'sports/butler/soccer_api/apifootball_com/teams'
-require 'sports/butler/soccer_api/apifootball_com/players'
-require 'sports/butler/soccer_api/apifootball_com/head_to_head'
-require 'sports/butler/soccer_api/apifootball_com/lineups'
-require 'sports/butler/soccer_api/apifootball_com/odds'
-require 'sports/butler/soccer_api/apifootball_com/scorers'
+Dir.glob(File.expand_path("../soccer_api/apifootball_com/*.rb", __FILE__)).each do |file|
+  require file
+end
 
 ## BASKETBALL
-require 'sports/butler/basketball_api/base'
-require 'sports/butler/basketball_api/countries'
-require 'sports/butler/basketball_api/competitions'
-# api_basketball_com
-require 'sports/butler/basketball_api/api_basketball_com/countries'
-require 'sports/butler/basketball_api/api_basketball_com/competitions'
+Dir.glob(File.expand_path("../basketball_api/*.rb", __FILE__)).each do |file|
+  require file
+end
 
+# api_basketball_com
+Dir.glob(File.expand_path("../basketball_api/api_basketball_com/*.rb", __FILE__)).each do |file|
+  require file
+end
 
 module Sports
   module Butler
@@ -88,7 +63,7 @@ module Sports
             @endpoints[method] : @endpoints[method] = build_endpoint_classes(endpoint_name)
         else
           # TODO: error class with own method_missing!
-          raise endpoint_not_available(method)
+          raise StandardError.new(endpoint_not_available(method))
         end
       end
 
