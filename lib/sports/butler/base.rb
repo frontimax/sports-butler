@@ -41,6 +41,10 @@ require 'sports/butler/soccer_api/apifootball_com/matches'
 require 'sports/butler/soccer_api/apifootball_com/standings'
 require 'sports/butler/soccer_api/apifootball_com/teams'
 require 'sports/butler/soccer_api/apifootball_com/players'
+require 'sports/butler/soccer_api/apifootball_com/head_to_head'
+require 'sports/butler/soccer_api/apifootball_com/lineups'
+require 'sports/butler/soccer_api/apifootball_com/odds'
+require 'sports/butler/soccer_api/apifootball_com/scorers'
 
 ## BASKETBALL
 require 'sports/butler/basketball_api/base'

@@ -4,7 +4,7 @@ module Sports
     module SoccerApi
       class HeadToHead < Sports::Butler::SoccerApi::Base
         def available_endpoint_methods
-          [:by_match]
+          [:by_match, :by_teams]
         end
 
         def path

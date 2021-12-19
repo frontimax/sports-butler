@@ -5,6 +5,9 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class HeadToHead < Sports::Butler::SoccerApi::HeadToHead
+          def available_endpoint_methods
+            [:by_match]
+          end
 
           def by_match(id:, filters: {})
             api.get(path: "#{path}/#{id}", filters: filters)

@@ -3,18 +3,22 @@
 module Sports
   module Butler
     module SoccerApi
-      module ApiFootballCom
+      module ApifootballCom
         class HeadToHead < Sports::Butler::SoccerApi::HeadToHead
           def available_endpoint_methods
             [:by_teams]
           end
 
           def path
-            'fixtures/headtohead'
+            :get_H2H
+          end
+
+          def build_path(action)
+            "action=#{action}"
           end
 
           def by_teams(team_id:, second_team_id:, filters: {})
-            filters.merge!({ team_id: team_id, second_team_id: second_team_id })
+            filters.merge!({ firstTeamId: team_id, second_team_id: second_team_id })
             api.get(path: build_path(path), filters: filters)
             api
           end

@@ -10,11 +10,16 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
       result  = butler.send(endpoint).send(meth)
     end
 
+    # TODO: remove debuggers!
+    # debugger
+
     match = eval(compare.to_s)
 
     expect(result).to be_a(result_compare)
 
     if result_compare == Sports::Butler::Api
+      # debugger
+
       expect(result.response).to be_a(HTTParty::Response)
       expect(result.response.parsed_response).to be_a(response_type)
 
@@ -76,7 +81,18 @@ shared_examples 'when #by_match_array' do |id, compare, mode = :response|
                   mode: mode
 end
 
+shared_examples 'when #by_match_from_to' do |id, from, to, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_match, params: { id: id, from: from, to: to },
+                  mode: mode
+end
+
 shared_examples 'when #by_teams' do |team_id, second_team_id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_teams,
+                  params: { team_id: team_id, second_team_id: second_team_id },
+                  mode: mode
+end
+
+shared_examples 'when #by_teams_hash' do |team_id, second_team_id, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_teams,
                   params: { team_id: team_id, second_team_id: second_team_id },
                   mode: mode
