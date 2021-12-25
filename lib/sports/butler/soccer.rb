@@ -16,16 +16,16 @@ module Sports
         :odds,
         :scorers,
         :standings,
-        :coachs
+        :coachs,
+        :injuries,
+        :predictions,
+        :sidelineds,
+        :statistics,
+        :timezones,
+        :transfers,
+        :trophies,
+        :venues
       ]
-      # injuries
-      # predictions
-      # sidelineds
-      # statistics
-      # timezones
-      # transfers
-      # trophies
-      # venues
 
       def initialize(sport:, api_name:)
         super

@@ -51,6 +51,24 @@ module Sports
           api.get(path: build_path(path), filters: filters)
           api
         end
+
+        def by_player(player_id:, filters: {})
+          filters.merge!({ player: player_id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
+        def by_team(team_id:, filters: {})
+          filters.merge!({ team: team_id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
+        def by_coach(coach_id:, filters: {})
+          filters.merge!({ coach: coach_id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
       end
     end
   end

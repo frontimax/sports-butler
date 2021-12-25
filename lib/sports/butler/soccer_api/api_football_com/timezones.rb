@@ -4,10 +4,8 @@ module Sports
   module Butler
     module SoccerApi
       module ApiFootballCom
-        class Coachs < Sports::Butler::SoccerApi::Coachs
-          def path
-            :coachs
-          end
+        class Timezones < Sports::Butler::SoccerApi::Timezones
+
         end
       end
     end

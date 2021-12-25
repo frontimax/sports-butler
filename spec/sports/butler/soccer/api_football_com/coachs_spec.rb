@@ -22,7 +22,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Coachs do
   end
 
   describe 'when #by_team' do
-    it_behaves_like 'when #by_team_name', 1540,
+    it_behaves_like 'when #by_team', 1540,
                     :response_coachs_one_api_football_com
   end
 end

@@ -86,15 +86,9 @@ shared_examples 'when #by_match_from_to' do |id, from, to, compare, mode = :resp
                   mode: mode
 end
 
-shared_examples 'when #by_team' do |id, compare, mode = :response|
+shared_examples 'when #by_team' do |team_id, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_team,
-                  params: { id: id },
-                  mode: mode
-end
-
-shared_examples 'when #by_team_name' do |name, compare, mode = :response|
-  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team,
-                  params: { team: name },
+                  params: { team_id: team_id },
                   mode: mode
 end
 
@@ -113,6 +107,26 @@ end
 shared_examples 'when #by_competition_and_year' do |id, year, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition_and_year,
                   params: { id: id, year: year }, mode: mode
+end
+
+shared_examples 'when #by_competition_and_season' do |competition_id, season, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition_and_season,
+                  params: { competition_id: competition_id, season: season }, mode: mode
+end
+
+shared_examples 'when #by_team_and_season' do |team_id, season, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team_and_season,
+                  params: { team_id: team_id, season: season }, mode: mode
+end
+
+shared_examples 'when #by_player' do |player_id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_player,
+                  params: { player_id: player_id }, mode: mode
+end
+
+shared_examples 'when #by_coach' do |coach_id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_coach,
+                  params: { coach_id: coach_id }, mode: mode
 end
 
 
