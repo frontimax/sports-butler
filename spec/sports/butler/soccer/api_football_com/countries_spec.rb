@@ -27,6 +27,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
     it_behaves_like 'when #search_by_name', 'Alb',
                     :response_countries_one_api_football_com
   end
+
+  describe 'when #by_area' do
+    it_behaves_like 'when error_missing_endpoint', :by_area, { area: 'Germany' }
+  end
 end
 
 def stubs_countries_api_football_com

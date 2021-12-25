@@ -15,6 +15,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::HeadToHead do
     it_behaves_like 'when #by_teams_hash', 205430, 2,
                     :response_head_to_head_all_apifootball_com, :parsed_response
   end
+
+  describe 'when #by_id' do
+    it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
+  end
 end
 
 def stubs_head_to_head_apifootball_com

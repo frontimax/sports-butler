@@ -19,6 +19,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Players do
   describe 'when #by_id_and_season' do
     it_behaves_like 'when error_missing_endpoint', :by_id_and_season, { id: 1, season: '2019' }
   end
+
+  describe 'when #by_name' do
+    it_behaves_like 'when error_missing_endpoint', :by_name, { name: 'Test' }
+  end
 end
 
 def stubs_players_football_data_org

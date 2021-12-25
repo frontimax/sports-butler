@@ -23,6 +23,10 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Competitions do
     it_behaves_like 'when #by_id', 18,
                     :response_competitions_one_api_basketball_com
   end
+
+  describe 'when #by_area' do
+    it_behaves_like 'when error_missing_endpoint', :by_area, { area: 'Germany' }
+  end
 end
 
 def stubs_competitions_api_basketball_com

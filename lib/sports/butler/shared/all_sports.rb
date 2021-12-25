@@ -53,18 +53,25 @@ module Sports
         end
 
         def by_player(player_id:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+
           filters.merge!({ player: player_id })
           api.get(path: build_path(path), filters: filters)
           api
         end
 
         def by_team(team_id:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
           filters.merge!({ team: team_id })
           api.get(path: build_path(path), filters: filters)
           api
         end
 
         def by_coach(coach_id:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
           filters.merge!({ coach: coach_id })
           api.get(path: build_path(path), filters: filters)
           api

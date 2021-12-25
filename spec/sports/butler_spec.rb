@@ -60,6 +60,12 @@ RSpec.describe Sports::Butler do
       }
     end
   end
+
+  describe 'when show_endpoints' do
+    it "has a version number" do
+      expect(Sports::Butler::show_endpoints).to be_truthy
+    end
+  end
 end
 
 def stubs_butler

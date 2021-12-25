@@ -15,6 +15,10 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::HeadToHead do
     it_behaves_like 'when #by_match', 78,
                     :response_head_to_head_one_football_data_org, :stringify_keys
   end
+
+  describe 'when #b_id' do
+    it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
+  end
 end
 
 def stubs_head_to_head_football_data_org

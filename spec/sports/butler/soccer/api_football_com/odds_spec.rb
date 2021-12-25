@@ -15,6 +15,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Odds do
     it_behaves_like 'when #by_match_array', 719371,
                     :response_odds_one_api_football_com, :response
   end
+
+  describe 'when #by_id' do
+    it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
+  end
 end
 
 def stubs_odds_api_football_com

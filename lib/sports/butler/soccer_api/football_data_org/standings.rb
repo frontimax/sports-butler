@@ -5,11 +5,6 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class Standings < Sports::Butler::SoccerApi::Standings
-
-          def available_endpoint_methods
-            [:by_competition]
-          end
-
           def by_competition(id:, filters: {})
             api.get(path: "competitions/#{id}/#{path}", filters: filters)
             api

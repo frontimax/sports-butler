@@ -23,6 +23,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Countries do
   describe 'when #by_id' do
     it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
   end
+
+  describe 'when #search_by_name' do
+    it_behaves_like 'when error_missing_endpoint', :search_by_name, { name: 'Engl' }
+  end
 end
 
 def stubs_countries_apifootball_com

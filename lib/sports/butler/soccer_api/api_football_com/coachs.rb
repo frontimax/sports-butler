@@ -5,9 +5,6 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Coachs < Sports::Butler::SoccerApi::Coachs
-          def path
-            :coachs
-          end
         end
       end
     end

@@ -15,6 +15,10 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Scorers do
     it_behaves_like 'when #by_competition', 2002,
                     :response_scorers_one_football_data_org, :stringify_keys
   end
+
+  describe 'when #by_name' do
+    it_behaves_like 'when error_missing_endpoint', :by_name, { name: 'Test' }
+  end
 end
 
 def stubs_scorers_football_data_org
