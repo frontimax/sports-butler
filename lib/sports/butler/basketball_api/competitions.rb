@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'sports/butler/soccer_api/base'
+require 'sports/butler/basketball_api/base'
 
 module Sports
   module Butler
