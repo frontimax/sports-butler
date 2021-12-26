@@ -5,6 +5,8 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class Countries < Sports::Butler::SoccerApi::Countries
+          require 'sports/butler/soccer_api/football_data_org/base'
+          include Sports::Butler::SoccerApi::FootballDataOrg::Base
 
           def available_endpoint_methods
             [:all, :by_name, :by_id]
@@ -15,8 +17,7 @@ module Sports
           end
 
           def by_id(id:, filters: {})
-            api.get(path: "#{path}/#{id}", filters: filters)
-            api
+            api_with_id(id, filters)
           end
 
           def by_name(name:, _filters: {})

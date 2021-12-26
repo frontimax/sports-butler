@@ -21,6 +21,23 @@ module Sports
       def error_missing_endpoint_method(meth)
         "The method '#{meth}' is not available for endpoint '#{self.class.name.demodulize}' in API #{self.api_name}."
       end
+
+      # param names
+      def filters_by_match(id)
+        { id: id }
+      end
+
+      def filters_by_teams(team_id, second_team_id)
+        { team_id: team_id, second_team_id: second_team_id }
+      end
+
+      def filters_by_id(id)
+        { id: id }
+      end
+
+      def filters_by_player(id)
+        { player: id }
+      end
     end
   end
 end

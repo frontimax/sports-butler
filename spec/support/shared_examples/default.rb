@@ -81,8 +81,8 @@ shared_examples 'when #by_match_array' do |id, compare, mode = :response|
                   mode: mode
 end
 
-shared_examples 'when #by_match_from_to' do |id, from, to, compare, mode = :response|
-  it_behaves_like 'when endpoint method', compare: compare, meth: :by_match, params: { id: id, from: from, to: to },
+shared_examples 'when #by_match_with_range' do |id, from, to, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_match_with_range, params: { id: id, from: from, to: to },
                   mode: mode
 end
 

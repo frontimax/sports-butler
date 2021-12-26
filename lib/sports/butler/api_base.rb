@@ -6,13 +6,6 @@ module Sports
       MSG_INVALID_CONFIG  = 'Invalid Configuration, check empty api_token or empty / invalid api_endpoint!'
 
       class << self
-
-        # MESSAGES
-        def reached_limit?(response)
-          Configuration.reached_limit?(response)
-        end
-
-        # RESULT MESSAGES
         def not_found_result(*params)
           error_message("#{params.join(', ')} could not be found.")
         end

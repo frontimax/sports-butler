@@ -11,12 +11,12 @@ module Sports
 
           def by_match(id:, filters: {})
             api.get(path: "#{path}/#{id}", filters: filters)
-            match = api.response.parsed_response
+            response = api.response.parsed_response
 
-            if match.is_a?(Hash) && match.with_indifferent_access.dig(:head2head)
-              match['head2head']
+            if response.is_a?(Hash) && response.with_indifferent_access.dig(:head2head)
+              response['head2head']
             else
-              match
+              response
             end
           end
 

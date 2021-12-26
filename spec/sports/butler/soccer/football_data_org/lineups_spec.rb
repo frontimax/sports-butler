@@ -15,11 +15,18 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Lineups do
     it_behaves_like 'when #by_match', 78,
                     :response_lineups_one_football_data_org, :stringify_keys
   end
+
+  describe 'error message' do
+    it_behaves_like 'when error_missing_resource', :by_match, { id: 99 }
+  end
 end
 
 def stubs_lineups_football_data_org
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/78")
     .to_return(status: 200, body: get_mocked_response('lineup.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/99")
+    .to_return(status: 200, body: get_mocked_response('resource_missing.json', sport, api_name))
 end
 
 def response_lineups_one_football_data_org

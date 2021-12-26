@@ -5,10 +5,11 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class Teams < Sports::Butler::SoccerApi::Teams
+          require 'sports/butler/soccer_api/football_data_org/base'
+          include Sports::Butler::SoccerApi::FootballDataOrg::Base
 
           def by_id(id:, filters: {})
-            api.get(path: "#{path}/#{id}", filters: filters)
-            api
+            api_with_id(id, filters)
           end
 
         end

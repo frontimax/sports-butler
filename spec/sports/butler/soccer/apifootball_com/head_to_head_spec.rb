@@ -22,7 +22,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::HeadToHead do
 end
 
 def stubs_head_to_head_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_H2H&firstTeamId=205430&second_team_id=2")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_H2H&firstTeamId=205430&secondTeamId=2")
     .to_return(status: 200, body: get_mocked_response('head_to_head.json', sport, api_name))
 end
 

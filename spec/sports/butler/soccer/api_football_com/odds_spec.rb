@@ -19,6 +19,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Odds do
   describe 'when #by_id' do
     it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
   end
+
+  describe 'when #by_match_and_range' do
+    it_behaves_like 'when error_missing_endpoint', :by_match_and_range, { id: 1, from: '2020-01-01', to: '2020-01-01' }
+  end
 end
 
 def stubs_odds_api_football_com

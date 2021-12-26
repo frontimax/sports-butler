@@ -5,6 +5,10 @@ module Sports
     module SoccerApi
       module ApifootballCom
         class Odds < Sports::Butler::SoccerApi::Odds
+          def available_endpoint_methods
+            [:by_match_with_range]
+          end
+
           def path
             :get_odds
           end
@@ -13,11 +17,12 @@ module Sports
             "action=#{action}"
           end
 
-          def by_match(id:, from:, to:, filters: {})
+          def by_match_with_range(id:, from:, to:, filters: {})
             filters.merge!({ match_id: id, from: from, to: to })
             api.get(path: build_path(path), filters: filters)
             api
           end
+
         end
       end
     end

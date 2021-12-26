@@ -21,7 +21,8 @@ module Sports
       end
 
       def get(path:, filters: {})
-        #return invalid_config_result if Configuration.invalid_config?
+        return Sports::Butler::ApiBase.invalid_config_result if Configuration.invalid_config?(sport, api_name)
+
         @response = process_http_party(path, filters)
         @response_code = response.code
 

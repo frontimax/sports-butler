@@ -8,17 +8,18 @@ module Sports
 
           def by_match(id:, filters: {})
             api.get(path: "#{path}/#{id}", filters: filters)
-            match = api.response.parsed_response.dig('match')
+            response = api.response.parsed_response
 
-            if match.is_a?(Hash) && match.with_indifferent_access.dig(:homeTeam) &&
-              match.with_indifferent_access.dig(:awayTeam)
+            if response.is_a?(Hash) && response.with_indifferent_access.dig(:match) &&
+              response['match'].with_indifferent_access.dig(:homeTeam) &&
+              response['match'].with_indifferent_access.dig(:awayTeam)
 
               lineups = {}
-              lineups['homeTeam'] = match['homeTeam']
-              lineups['awayTeam'] = match['awayTeam']
+              lineups['homeTeam'] = response['match']['homeTeam']
+              lineups['awayTeam'] = response['match']['awayTeam']
               lineups
             else
-              match
+              response
             end
           end
         end

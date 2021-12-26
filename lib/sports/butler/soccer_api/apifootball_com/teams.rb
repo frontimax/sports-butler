@@ -14,10 +14,8 @@ module Sports
             :get_teams
           end
 
-          def by_id(id:, filters: {})
-            filters.merge!({ team_id: id })
-            api.get(path: build_path(path), filters: filters)
-            api
+          def filters_by_id(id)
+            { team_id: id }
           end
         end
       end

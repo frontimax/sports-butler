@@ -66,6 +66,12 @@ RSpec.describe Sports::Butler do
       expect(Sports::Butler::show_endpoints).to be_truthy
     end
   end
+
+  describe 'when default_api_hash' do
+    it 'returns default hash' do
+      expect(Sports::Butler::Configuration.default_api_hash).to eq({ soccer: {}, basketball: {} })
+    end
+  end
 end
 
 def stubs_butler

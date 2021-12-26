@@ -19,11 +19,18 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::HeadToHead do
   describe 'when #b_id' do
     it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
   end
+
+  describe 'error message' do
+    it_behaves_like 'when error_missing_resource', :by_match, { id: 99 }
+  end
 end
 
 def stubs_head_to_head_football_data_org
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/78")
     .to_return(status: 200, body: get_mocked_response('head_to_head.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/99")
+    .to_return(status: 200, body: get_mocked_response('resource_missing.json', sport, api_name))
 end
 
 def response_head_to_head_one_football_data_org

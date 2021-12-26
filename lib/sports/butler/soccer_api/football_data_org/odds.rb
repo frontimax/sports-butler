@@ -5,15 +5,19 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class Odds < Sports::Butler::SoccerApi::Odds
+          def available_endpoint_methods
+            [:by_match]
+          end
 
           def by_match(id:, filters: {})
             api.get(path: "#{path}/#{id}", filters: filters)
-            match = api.response.parsed_response.dig('match')
+            response = api.response.parsed_response
 
-            if match.is_a?(Hash) && match.with_indifferent_access.dig(:odds)
-              match['odds']
+            if response.is_a?(Hash) && response.with_indifferent_access.dig(:match) &&
+              response['match'].with_indifferent_access.dig(:odds)
+              response['match']['odds']
             else
-              match
+              response
             end
           end
 

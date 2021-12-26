@@ -33,7 +33,6 @@ module Sports
 
           yield self
 
-          # config.api_token[:soccer][:api_football_com]  = ENV['API_TOKEN_API_DASH_COM']
           @api_token  ||= default_api_hash
           @api_endpoint  ||= default_api_hash
 
@@ -58,10 +57,9 @@ module Sports
           }
         end
 
-        # TODO!
-        def invalid_config?
-          Configuration.api_token.blank? ||
-            !Configuration.api_name_valid?(Configuration.api_name)
+        def invalid_config?(sport, api_name)
+          Configuration.api_token[sport][api_name].blank? ||
+            !Configuration.valid_sport_api?(sport, api_name)
         end
 
         def http_party_url(path, sport, api_name)
@@ -98,15 +96,6 @@ module Sports
 
           result.merge!(Configuration.header_additional)
           result
-        end
-
-        ## old!
-        def valid_sport?(sport)
-          AVAILABLE_SPORTS.include?(sport.to_sym)
-        end
-
-        def valid_api?(api_name)
-          AVAILABLE_APIS.include?(api_name.to_sym)
         end
 
         def valid_sport_api?(sport, api_name)

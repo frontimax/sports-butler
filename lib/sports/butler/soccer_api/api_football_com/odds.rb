@@ -5,14 +5,16 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Odds < Sports::Butler::SoccerApi::Odds
+          def available_endpoint_methods
+            [:by_match]
+          end
+
           def path
             :odds
           end
 
-          def by_match(id:, filters: {})
-            filters.merge!({ fixture: id })
-            api.get(path: build_path(path), filters: filters)
-            api
+          def filters_by_match(id)
+           { fixture: id }
           end
         end
       end

@@ -17,10 +17,8 @@ module Sports
             "action=#{action}"
           end
 
-          def by_teams(team_id:, second_team_id:, filters: {})
-            filters.merge!({ firstTeamId: team_id, second_team_id: second_team_id })
-            api.get(path: build_path(path), filters: filters)
-            api
+          def filters_by_teams(team_id, second_team_id)
+            { firstTeamId: team_id, secondTeamId: second_team_id }
           end
         end
       end
