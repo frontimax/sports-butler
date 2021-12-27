@@ -22,10 +22,18 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Competitions do
   describe 'when #by_id' do
     it_behaves_like 'when error_missing_endpoint', :by_id, { id: 1 }
   end
+
+  describe 'when #by_country' do
+    it_behaves_like 'when #by_country', 41,
+                    :response_competitions_all_apifootball_com, :parsed_response
+  end
 end
 
 def stubs_competitions_apifootball_com
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_leagues")
+    .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_leagues&country_id=41")
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 end
 

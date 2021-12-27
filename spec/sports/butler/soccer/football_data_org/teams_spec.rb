@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Teams do
+RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Teams do
   let(:sport)     { :soccer }
   let(:api_name)  { :football_data_org }
   let(:endpoint)  { :teams }

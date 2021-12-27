@@ -16,6 +16,11 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Players do
                     :response_players_one_apifootball_com, :parsed_response
   end
 
+  describe 'when #by_name' do
+    it_behaves_like 'when #by_name', 'El Mhamdi Salaheddine',
+                    :response_players_one_apifootball_com, :parsed_response
+  end
+
   describe 'when #by_id_and_season' do
     it_behaves_like 'when error_missing_endpoint', :by_id_and_season, { id: 1, season: '2019' }
   end
@@ -23,6 +28,9 @@ end
 
 def stubs_players_apifootball_com
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_players&player_id=4068429598")
+    .to_return(status: 200, body: get_mocked_response('player.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_players&player_name=El Mhamdi Salaheddine")
     .to_return(status: 200, body: get_mocked_response('player.json', sport, api_name))
 end
 

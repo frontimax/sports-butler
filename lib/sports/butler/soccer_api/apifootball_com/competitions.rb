@@ -7,7 +7,7 @@ module Sports
         class Competitions < Sports::Butler::SoccerApi::Competitions
 
           def available_endpoint_methods
-            [:all]
+            [:all, :by_country]
           end
 
 

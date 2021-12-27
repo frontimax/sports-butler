@@ -18,6 +18,14 @@ module Sports
           api
         end
 
+        def by_country_name(name: , filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ country: name })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
         def by_id(id: , filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
@@ -34,10 +42,18 @@ module Sports
           api
         end
 
+        def by_country(country_id: , filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ country_id: country_id })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
         def by_competition(id:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!({ competition_id: id })
+          filters.merge!(filters_by_competition(id))
           api.get(path: build_path(path), filters: filters)
           api
         end
@@ -61,7 +77,7 @@ module Sports
         def by_team(team_id:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!({ team: team_id })
+          filters.merge!(filters_by_team(team_id))
           api.get(path: build_path(path), filters: filters)
           api
         end
@@ -85,7 +101,7 @@ module Sports
         def by_competition_and_year(id:, year:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!({ league: id, season: year })
+          filters.merge!(filters_by_competition_and_year(id, year))
           api.get(path: build_path(path), filters: filters)
           api
         end

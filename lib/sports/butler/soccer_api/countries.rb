@@ -7,7 +7,6 @@ module Sports
       class Countries < Sports::Butler::SoccerApi::Base
         # def available_endpoint_methods
         #   [:all, :by_name, :by_id, :search_by_name]
-          # by_code
         # end
 
         def path

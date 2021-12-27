@@ -31,12 +31,24 @@ module Sports
         { team_id: team_id, second_team_id: second_team_id }
       end
 
+      def filters_by_team(team_id)
+        { team: team_id }
+      end
+
       def filters_by_id(id)
         { id: id }
       end
 
       def filters_by_player(id)
         { player: id }
+      end
+
+      def filters_by_competition(id)
+        { competition_id: id }
+      end
+
+      def filters_by_competition_and_year(id, year)
+        { league: id, season: year }
       end
     end
   end

@@ -5,6 +5,10 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Matches < Sports::Butler::SoccerApi::Matches
+          def available_endpoint_methods
+            [:by_id, :by_competition_and_year, :all]
+          end
+
           def path
             :fixtures
           end

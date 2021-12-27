@@ -129,6 +129,47 @@ shared_examples 'when #by_coach' do |coach_id, compare, mode = :response|
                   params: { coach_id: coach_id }, mode: mode
 end
 
+shared_examples 'when #by_country_name' do |name, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_country_name,
+                  params: { name: name }, mode: mode
+end
+
+shared_examples 'when #seasons' do |compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :seasons,
+                  params: {}, mode: mode
+end
+
+shared_examples 'when #leagues' do |compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :leagues,
+                  params: {}, mode: mode
+end
+
+shared_examples 'when #cups' do |compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :cups,
+                  params: {}, mode: mode
+end
+
+shared_examples 'when #by_country' do |country_id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_country,
+                  params: { country_id: country_id },
+                  mode: mode
+end
+
+shared_examples 'when #by_team_and_status' do |team_id, status, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team_and_status,
+                  params: { team_id: team_id, status: status }, mode: mode
+end
+
+shared_examples 'when #by_team_finished' do |team_id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team_finished,
+                  params: { team_id: team_id }, mode: mode
+end
+
+shared_examples 'when #by_team_scheduled' do |team_id, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team_scheduled,
+                  params: { team_id: team_id }, mode: mode
+end
+
 
 
 

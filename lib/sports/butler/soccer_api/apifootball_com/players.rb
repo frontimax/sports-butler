@@ -6,7 +6,7 @@ module Sports
       module ApifootballCom
         class Players < Sports::Butler::SoccerApi::Players
           def available_endpoint_methods
-            [:by_id]
+            [:by_id, :by_name]
           end
 
           def build_path(action)
@@ -15,6 +15,12 @@ module Sports
 
           def path
             :get_players
+          end
+
+          def by_name(name: , filters: {})
+            filters.merge!({ player_name: name })
+            api.get(path: build_path(path), filters: filters)
+            api
           end
 
           def filters_by_id(id)

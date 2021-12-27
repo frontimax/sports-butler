@@ -5,6 +5,10 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Teams < Sports::Butler::SoccerApi::Teams
+          def available_endpoint_methods
+            [:by_id, :by_name]
+          end
+
           def path
             :teams
           end
