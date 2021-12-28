@@ -23,7 +23,7 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
       expect(result.response).to be_a(HTTParty::Response)
       expect(result.response.parsed_response).to be_a(response_type)
 
-      # debugger
+      #  debugger
 
       case mode
       when :parsed_response
@@ -168,6 +168,16 @@ end
 shared_examples 'when #by_team_scheduled' do |team_id, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_team_scheduled,
                   params: { team_id: team_id }, mode: mode
+end
+
+shared_examples 'when #by_season' do |season, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_season,
+                  params: { season: season }, mode: mode
+end
+
+shared_examples 'when #by_code' do |code, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_code,
+                  params: { code: code }, mode: mode
 end
 
 

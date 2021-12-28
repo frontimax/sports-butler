@@ -17,18 +17,6 @@ module Sports
             api.get(path: "#{path}/seasons", filters: filters)
             api
           end
-
-          def leagues(filters: {})
-            filters.merge!({ type: 'league' })
-            api.get(path: build_path(path), filters: filters)
-            api
-          end
-
-          def cups(filters: {})
-            filters.merge!({ type: 'cup' })
-            api.get(path: build_path(path), filters: filters)
-            api
-          end
         end
       end
     end

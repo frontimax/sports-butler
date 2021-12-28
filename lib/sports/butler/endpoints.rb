@@ -3,8 +3,10 @@ module Sports
   module Butler
     class Endpoints
       require 'sports/butler/shared/all_sports'
+      require 'sports/butler/shared/api_coms'
 
       include Sports::Butler::Shared::AllSports
+      include Sports::Butler::Shared::ApiComs
 
       attr_accessor :sport, :api_name, :api
 
@@ -49,6 +51,10 @@ module Sports
 
       def filters_by_competition_and_year(id, year)
         { league: id, season: year }
+      end
+
+      def filters_search_by_name(name)
+        { name: name }
       end
     end
   end

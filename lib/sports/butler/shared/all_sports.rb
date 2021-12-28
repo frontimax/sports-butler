@@ -61,7 +61,7 @@ module Sports
         def search_by_name(name:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!({ name: name })
+          filters.merge!(filters_search_by_name(name))
           api.get(path: build_path(path), filters: filters)
           api
         end
@@ -124,6 +124,22 @@ module Sports
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
           filters.merge!({ team: team_id, season: season })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
+        def by_season(season:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ season: season })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
+        def by_code(code: , filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ code: code })
           api.get(path: build_path(path), filters: filters)
           api
         end

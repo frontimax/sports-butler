@@ -11,12 +11,17 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Competitions do
     stubs_competitions_api_basketball_com
   end
 
+  describe 'when #by_area' do
+    it_behaves_like 'when error_missing_endpoint', :by_area, { area: 'Germany' }
+  end
+
   describe 'when all' do
     it_behaves_like 'when #all', :response_competitions_all_api_basketball_com
   end
 
   describe 'when #by_name' do
-    it_behaves_like 'when error_missing_endpoint', :by_name, { name: 'Bundesliga' }
+    it_behaves_like 'when #by_name', 'Liga A',
+                    :response_competitions_one_api_basketball_com
   end
 
   describe 'when #by_id' do
@@ -24,8 +29,34 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Competitions do
                     :response_competitions_one_api_basketball_com
   end
 
-  describe 'when #by_area' do
-    it_behaves_like 'when error_missing_endpoint', :by_area, { area: 'Germany' }
+  describe 'when #by_country_name' do
+    it_behaves_like 'when #by_country_name', 'Argentina',
+                    :response_competitions_all_api_basketball_com
+  end
+
+  describe 'when #by_country_name' do
+    it_behaves_like 'when #by_country_name', 'Argentina',
+                    :response_competitions_all_api_basketball_com
+  end
+
+  describe 'when #by_season' do
+    it_behaves_like 'when #by_season', 2020,
+                    :response_competitions_all_api_basketball_com
+  end
+
+  describe 'when #cups' do
+    it_behaves_like 'when #cups',
+                    :response_competitions_all_api_basketball_com
+  end
+
+  describe 'when #leagues' do
+    it_behaves_like 'when #leagues',
+                    :response_competitions_all_api_basketball_com
+  end
+
+  describe 'when #by_country' do
+    it_behaves_like 'when #by_country', 16,
+                    :response_competitions_one_api_basketball_com
   end
 end
 
@@ -34,6 +65,27 @@ def stubs_competitions_api_basketball_com
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 
   stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?id=18")
+    .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?name=Liga A")
+    .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?country=Argentina")
+    .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?season=2020")
+    .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?search=ARG")
+    .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?type=cup")
+    .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?type=league")
+    .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/leagues?country_id=16")
     .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
 end
 
