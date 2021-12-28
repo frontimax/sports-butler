@@ -72,6 +72,29 @@ RSpec.describe Sports::Butler do
       expect(Sports::Butler::Configuration.default_api_hash).to eq({ soccer: {}, basketball: {} })
     end
   end
+
+  describe 'when invalid_config_result ' do
+    before do
+      Sports::Butler::Configuration.configure do |config|
+        config.api_token = { soccer: {}, basketball: {} }
+
+        config.api_endpoint = { soccer: {}, basketball: {} }
+        config.api_endpoint[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
+      end
+
+      stubs_butler
+    end
+
+    it 'returns invalid_config_result message hash' do
+      butler = Sports::Butler.new(sport: :soccer, api_name: :api_football_com)
+
+      expect(butler).to be_a(Sports::Butler::Soccer)
+      
+      butler.countries.by_name(name: 'Albania')
+      expect(butler.countries.api.success).to be_falsey
+      expect(butler.countries.api.response[:message]).to eq('Invalid Configuration, check empty api_token or empty / invalid api_endpoint!')
+    end
+  end
 end
 
 def stubs_butler

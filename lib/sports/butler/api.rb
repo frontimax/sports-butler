@@ -21,7 +21,11 @@ module Sports
       end
 
       def get(path:, filters: {})
-        return Sports::Butler::ApiBase.invalid_config_result if Configuration.invalid_config?(sport, api_name)
+        if Configuration.invalid_config?(sport, api_name)
+          @response = Sports::Butler::ApiBase.invalid_config_result
+          @response_code = 400
+          return false
+        end
 
         @response = process_http_party(path, filters)
         @response_code = response.code
@@ -44,7 +48,7 @@ module Sports
         if response.parsed_response.is_a?(Hash) && response.dig('message')
           error_message(response['message'])
         else
-          #Configuration.http_party_response(response)
+          # TODO: Configuration.http_party_response(response)
           response.parsed_response
         end
       end
