@@ -1,6 +1,6 @@
 # Sports Butler
 
-![Image of Yaktocat](https://www.football-butler.de/wp-content/uploads/2021/03/cropped-cropped-cropped-logo_football_butler_128px_geen02-1.png)
+![Image of Yaktocat](https://www.sports-butler.de/wp-content/uploads/2021/12/cropped-sb_logo_01_512px.png)
 
 [![Build Status](https://app.travis-ci.com/frontimax/sports-butler.svg?token=kdzGtbwhXCggiYUeL5pd&branch=main&status=errored)](https://travis-ci.com/frontimax/sports-butler)
 [![codecov](https://codecov.io/gh/frontimax/football-butler/branch/main/graph/badge.svg?token=GBV4PK62WC)](https://codecov.io/gh/frontimax/football-butler)
@@ -35,9 +35,42 @@ Depending on you Payment Plan or Subscription you can access international Compe
 
 Also see the following Links:
 
-[www.football-butler.de (Offical Gem Homepage)](https://www.football-butler.de)  
+[www.sports-butler.de (Offical Gem Homepage)](https://www.sports-butler.de)  
 [www.code-butler.de (More Projects & Solutions with Rails & Flutter)](https://www.code-butler.de)  
 [Twitter/code_butler](https://twitter.com/code_butler)
+
+# Differences to previous gem football-butler
+
+football-butler only provided a multi wrapper for football (soccer) - obviously.
+
+sports-butler also supports multi sports, initially adding a basketball API (https://www.api-basketball.com).
+
+The main difference in code: while football-butler used class methods, sports-butler uses an object-oriented apprach.
+
+In Short an example:
+
+*football-butler:*
+
+    Football::Butler::Matches.by_competition(id: 2002)
+
+*sports-butler:*
+
+    butler = Sports::Butler.new(sport: :soccer, api_name: :api_football_com)
+    butler.matches.by_competition(id: 2002)
+
+While football-butler returned a result as a Hash or Array, sports-butler always returns the used API object, e.g.:
+
+    #<Sports::Butler::Api:0x00007f92f5931f40
+    @api_name=:football_data_org,
+    @errors=[],
+    @headers={"X-Auth-Token"=>"123456789abcdefg"},
+    @query={},
+    @response={"message"=>"The resource you are looking for does not exist.", "error"=>404},
+    @response_code=404,
+    @response_processed={"message"=>"The resource you are looking for does not exist."},
+    @sport=:soccer,
+    @success=false,
+    @url="https://api.football-data.org/v2/competitions/31/standings">
 
 # Available Endpoints
 ## Countries

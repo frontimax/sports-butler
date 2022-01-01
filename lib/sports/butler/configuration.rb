@@ -63,19 +63,10 @@ module Sports
         end
 
         def http_party_url(path, sport, api_name)
-          # TODO: sports switch!
           case api_name
-
-          # SOCCER
           when :apifootball_com
             "#{Configuration.api_endpoint[sport][api_name]}?#{path}&APIkey=#{Configuration.api_token[sport][api_name]}"
-          when :football_data_org
-            "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
-          when :api_football_com
-            "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
-
-          # BASKETBALL
-          when :api_basketball_com
+          else
             "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
           end
         end

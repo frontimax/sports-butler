@@ -17,10 +17,13 @@ module Sports
               lineups = {}
               lineups['homeTeam'] = response['match']['homeTeam']
               lineups['awayTeam'] = response['match']['awayTeam']
-              lineups
+
+              api.response_processed = lineups
             else
-              response
+              api.response_processed = response
             end
+
+            api
           end
         end
       end

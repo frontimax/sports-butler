@@ -21,16 +21,21 @@ module Sports
           end
 
           def by_name(name:, _filters: {})
-            countries = all
+            api = all
 
-            return countries if countries.response_processed.is_a?(Hash) &&
-              countries.response_processed.with_indifferent_access.dig('message')
-            country  = countries.response_processed['areas'].detect { |area| area['name'] == name }
-            return not_found_result(name) unless country
+            return api if api.response_processed.is_a?(Hash) &&
+              api.response_processed.with_indifferent_access.dig('message')
 
-            by_id(id: country['id'])
+            country = api.response_processed['areas'].detect { |area| area['name'] == name }
+
+            if country
+              by_id(id: country['id'])
+            else
+              api.response_processed = not_found_result(name)
+              api
+            end
+
           end
-
         end
       end
     end

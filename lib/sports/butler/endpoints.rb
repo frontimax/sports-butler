@@ -56,6 +56,11 @@ module Sports
       def filters_search_by_name(name)
         { name: name }
       end
+
+      # def filters_by_competition_and_team_and_season(competition_id, team_id, season)
+      #   { competition_id: competition_id, team_id: team_id, season: season }
+      # end
+
     end
   end
 end

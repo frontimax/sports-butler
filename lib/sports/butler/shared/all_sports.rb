@@ -143,6 +143,14 @@ module Sports
           api.get(path: build_path(path), filters: filters)
           api
         end
+
+        def by_competition_and_team_and_season(competition_id:, team_id:, season: , filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!(filters_by_competition_and_team_and_season(competition_id, team_id, season))
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
       end
     end
   end

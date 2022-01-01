@@ -23,15 +23,17 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
       expect(result.response).to be_a(HTTParty::Response)
       expect(result.response.parsed_response).to be_a(response_type)
 
-      #  debugger
+      # debugger
 
       case mode
       when :parsed_response
         expect(result.response.parsed_response).to match_array(match)
       when :response
-        expect(result.response.parsed_response['response']).to match_array(match)
+          expect(result.response.parsed_response['response']).to match_array(match)
       when :stringify_keys
         expect(result.response.parsed_response).to include(match.stringify_keys)
+      when :response_processed
+        expect(result.response_processed).to include(match.stringify_keys)
       else
         expect(result.response.parsed_response[mode.to_s]).to match_array(match[mode])
       end
@@ -178,6 +180,11 @@ end
 shared_examples 'when #by_code' do |code, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_code,
                   params: { code: code }, mode: mode
+end
+
+shared_examples 'when #by_competition_and_team_and_season' do |competition_id, team_id, season, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition_and_team_and_season,
+                  params: { competition_id: competition_id, team_id: team_id, season: season }, mode: mode
 end
 
 

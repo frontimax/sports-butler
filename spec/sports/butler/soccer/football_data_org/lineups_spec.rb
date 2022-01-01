@@ -12,8 +12,8 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Lineups do
   end
 
   describe 'when #by_match' do
-    it_behaves_like 'when #by_match', 78,
-                    :response_lineups_one_football_data_org, :stringify_keys
+    it_behaves_like 'when #by_match_array', 78,
+                    :response_lineups_one_football_data_org, :response_processed
   end
 
   describe 'error message' do

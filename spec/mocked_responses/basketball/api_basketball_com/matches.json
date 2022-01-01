@@ -1,0 +1,125 @@
+{
+  "get": "games",
+  "parameters": {
+    "season": "2021",
+    "league": "13"
+  },
+  "errors": [],
+  "results": 211,
+  "response": [
+    {
+      "id": 126634,
+      "date": "2021-05-14T23:00:00+00:00",
+      "time": "23:00",
+      "timestamp": 1621033200,
+      "timezone": "UTC",
+      "stage": "",
+      "week": "",
+      "status": {
+        "long": "Game Finished",
+        "short": "FT",
+        "timer": ""
+      },
+      "league": {
+        "id": 13,
+        "name": "NBA W",
+        "type": "League",
+        "season": 2021,
+        "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+      },
+      "country": {
+        "id": 5,
+        "name": "USA",
+        "code": "US",
+        "flag": "https://media.api-sports.io/flags/us.svg"
+      },
+      "teams": {
+        "home": {
+          "id": 170,
+          "name": "New York Liberty W",
+          "logo": "https://media.api-sports.io/basketball/teams/170.png"
+        },
+        "away": {
+          "id": 166,
+          "name": "Indiana Fever W",
+          "logo": "https://media.api-sports.io/basketball/teams/166.png"
+        }
+      },
+      "scores": {
+        "home": {
+          "quarter_1": 26,
+          "quarter_2": 21,
+          "quarter_3": 21,
+          "quarter_4": 22,
+          "over_time": "",
+          "total": 90
+        },
+        "away": {
+          "quarter_1": 21,
+          "quarter_2": 26,
+          "quarter_3": 17,
+          "quarter_4": 23,
+          "over_time": "",
+          "total": 87
+        }
+      }
+    },
+    {
+      "id": 126635,
+      "date": "2021-05-14T23:30:00+00:00",
+      "time": "23:30",
+      "timestamp": 1621035000,
+      "timezone": "UTC",
+      "stage": "",
+      "week": "",
+      "status": {
+        "long": "Game Finished",
+        "short": "FT",
+        "timer": ""
+      },
+      "league": {
+        "id": 13,
+        "name": "NBA W",
+        "type": "League",
+        "season": 2021,
+        "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+      },
+      "country": {
+        "id": 5,
+        "name": "USA",
+        "code": "US",
+        "flag": "https://media.api-sports.io/flags/us.svg"
+      },
+      "teams": {
+        "home": {
+          "id": 162,
+          "name": "Atlanta Dream W",
+          "logo": "https://media.api-sports.io/basketball/teams/162.png"
+        },
+        "away": {
+          "id": 164,
+          "name": "Connecticut Sun W",
+          "logo": "https://media.api-sports.io/basketball/teams/164.png"
+        }
+      },
+      "scores": {
+        "home": {
+          "quarter_1": 17,
+          "quarter_2": 16,
+          "quarter_3": 16,
+          "quarter_4": 18,
+          "over_time": "",
+          "total": 67
+        },
+        "away": {
+          "quarter_1": 22,
+          "quarter_2": 21,
+          "quarter_3": 19,
+          "quarter_4": 16,
+          "over_time": "",
+          "total": 78
+        }
+      }
+    }
+  ]
+}  

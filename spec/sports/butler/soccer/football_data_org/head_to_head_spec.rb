@@ -11,9 +11,9 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::HeadToHead do
     stubs_head_to_head_football_data_org
   end
 
-  describe 'when #by_match' do
-    it_behaves_like 'when #by_match', 78,
-                    :response_head_to_head_one_football_data_org, :stringify_keys
+  describe 'when #by_match_array' do
+    it_behaves_like 'when #by_match_array', 78,
+                    :response_head_to_head_one_football_data_org, :response_processed
   end
 
   describe 'when #b_id' do
@@ -21,7 +21,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::HeadToHead do
   end
 
   describe 'error message' do
-    it_behaves_like 'when error_missing_resource', :by_match, { id: 99 }
+    it_behaves_like 'when error_missing_resource', :by_match, { id: 99 }, :response_processed
   end
 end
 

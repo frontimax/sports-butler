@@ -1,0 +1,105 @@
+{
+  "get": "statistics",
+  "parameters": {
+    "season": "2020",
+    "league": "1",
+    "team": "1"
+  },
+  "errors": [],
+  "results": 5,
+  "response": {
+    "country": {
+      "id": "",
+      "name": "",
+      "code": "",
+      "flag": ""
+    },
+    "league": {
+      "id": "",
+      "name": "",
+      "type": "",
+      "season": "",
+      "logo": ""
+    },
+    "team": {
+      "id": 1,
+      "name": "Melbourne United",
+      "logo": "https://media.api-sports.io/basketball/teams/1.png"
+    },
+    "games": {
+      "played": {
+        "home": 0,
+        "away": 0,
+        "all": 0
+      },
+      "wins": {
+        "home": {
+          "total": 0,
+          "percentage": ""
+        },
+        "away": {
+          "total": 0,
+          "percentage": ""
+        },
+        "all": {
+          "total": 0,
+          "percentage": ""
+        }
+      },
+      "draws": {
+        "home": {
+          "total": 0,
+          "percentage": ""
+        },
+        "away": {
+          "total": 0,
+          "percentage": ""
+        },
+        "all": {
+          "total": 0,
+          "percentage": ""
+        }
+      },
+      "loses": {
+        "home": {
+          "total": 0,
+          "percentage": ""
+        },
+        "away": {
+          "total": 0,
+          "percentage": ""
+        },
+        "all": {
+          "total": 0,
+          "percentage": ""
+        }
+      }
+    },
+    "points": {
+      "for": {
+        "total": {
+          "home": 0,
+          "away": 0,
+          "all": 0
+        },
+        "average": {
+          "home": "0.0",
+          "away": "0.0",
+          "all": "0.0"
+        }
+      },
+      "against": {
+        "total": {
+          "home": 0,
+          "away": 0,
+          "all": 0
+        },
+        "average": {
+          "home": "0.0",
+          "away": "0.0",
+          "all": "0.0"
+        }
+      }
+    }
+  }
+}

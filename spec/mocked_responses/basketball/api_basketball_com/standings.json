@@ -1,0 +1,529 @@
+{
+  "get": "standings",
+  "parameters": {
+    "league": "13",
+    "season": "2021"
+  },
+  "errors": [],
+  "results": 1,
+  "response": [
+    [
+      {
+        "position": 1,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Eastern Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 164,
+          "name": "Connecticut Sun W",
+          "logo": "https://media.api-sports.io/basketball/teams/164.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 26,
+            "percentage": "0.813"
+          },
+          "lose": {
+            "total": 6,
+            "percentage": "0.187"
+          }
+        },
+        "points": {
+          "for": 2551,
+          "against": 2237
+        },
+        "form": "WWWWW",
+        "description": ""
+      },
+      {
+        "position": 2,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Eastern Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 163,
+          "name": "Chicago Sky W",
+          "logo": "https://media.api-sports.io/basketball/teams/163.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 16,
+            "percentage": "0.500"
+          },
+          "lose": {
+            "total": 16,
+            "percentage": "0.500"
+          }
+        },
+        "points": {
+          "for": 2664,
+          "against": 2622
+        },
+        "form": "WLLWL",
+        "description": ""
+      },
+      {
+        "position": 3,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Eastern Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 175,
+          "name": "Washington Mystics W",
+          "logo": "https://media.api-sports.io/basketball/teams/175.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 12,
+            "percentage": "0.375"
+          },
+          "lose": {
+            "total": 20,
+            "percentage": "0.625"
+          }
+        },
+        "points": {
+          "for": 2553,
+          "against": 2676
+        },
+        "form": "LLWWL",
+        "description": ""
+      },
+      {
+        "position": 4,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Eastern Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 170,
+          "name": "New York Liberty W",
+          "logo": "https://media.api-sports.io/basketball/teams/170.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 12,
+            "percentage": "0.375"
+          },
+          "lose": {
+            "total": 20,
+            "percentage": "0.625"
+          }
+        },
+        "points": {
+          "for": 2511,
+          "against": 2736
+        },
+        "form": "WLLLL",
+        "description": ""
+      },
+      {
+        "position": 5,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Eastern Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 162,
+          "name": "Atlanta Dream W",
+          "logo": "https://media.api-sports.io/basketball/teams/162.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 8,
+            "percentage": "0.250"
+          },
+          "lose": {
+            "total": 24,
+            "percentage": "0.750"
+          }
+        },
+        "points": {
+          "for": 2518,
+          "against": 2698
+        },
+        "form": "LLWLL",
+        "description": ""
+      },
+      {
+        "position": 6,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Eastern Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 166,
+          "name": "Indiana Fever W",
+          "logo": "https://media.api-sports.io/basketball/teams/166.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 6,
+            "percentage": "0.188"
+          },
+          "lose": {
+            "total": 26,
+            "percentage": "0.812"
+          }
+        },
+        "points": {
+          "for": 2410,
+          "against": 2724
+        },
+        "form": "LLLLL",
+        "description": ""
+      },
+      {
+        "position": 1,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Western Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 167,
+          "name": "Las Vegas Aces W",
+          "logo": "https://media.api-sports.io/basketball/teams/167.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 24,
+            "percentage": "0.750"
+          },
+          "lose": {
+            "total": 8,
+            "percentage": "0.250"
+          }
+        },
+        "points": {
+          "for": 2856,
+          "against": 2566
+        },
+        "form": "WWWWL",
+        "description": ""
+      },
+      {
+        "position": 2,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Western Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 169,
+          "name": "Minnesota Lynx W",
+          "logo": "https://media.api-sports.io/basketball/teams/169.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 22,
+            "percentage": "0.688"
+          },
+          "lose": {
+            "total": 10,
+            "percentage": "0.312"
+          }
+        },
+        "points": {
+          "for": 2647,
+          "against": 2519
+        },
+        "form": "WWWWL",
+        "description": ""
+      },
+      {
+        "position": 3,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Western Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 172,
+          "name": "Seattle Storm W",
+          "logo": "https://media.api-sports.io/basketball/teams/172.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 21,
+            "percentage": "0.656"
+          },
+          "lose": {
+            "total": 11,
+            "percentage": "0.344"
+          }
+        },
+        "points": {
+          "for": 2714,
+          "against": 2572
+        },
+        "form": "WLWWL",
+        "description": ""
+      },
+      {
+        "position": 4,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Western Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 171,
+          "name": "Phoenix Mercury W",
+          "logo": "https://media.api-sports.io/basketball/teams/171.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 19,
+            "percentage": "0.594"
+          },
+          "lose": {
+            "total": 13,
+            "percentage": "0.406"
+          }
+        },
+        "points": {
+          "for": 2626,
+          "against": 2544
+        },
+        "form": "LLLWW",
+        "description": ""
+      },
+      {
+        "position": 5,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Western Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 165,
+          "name": "Dallas Wings W",
+          "logo": "https://media.api-sports.io/basketball/teams/165.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 14,
+            "percentage": "0.438"
+          },
+          "lose": {
+            "total": 18,
+            "percentage": "0.562"
+          }
+        },
+        "points": {
+          "for": 2596,
+          "against": 2613
+        },
+        "form": "WLWLL",
+        "description": ""
+      },
+      {
+        "position": 6,
+        "stage": "WNBA - Regular Season",
+        "group": {
+          "name": "Western Conference",
+          "points": ""
+        },
+        "team": {
+          "id": 168,
+          "name": "Los Angeles Sparks W",
+          "logo": "https://media.api-sports.io/basketball/teams/168.png"
+        },
+        "league": {
+          "id": 13,
+          "name": "NBA W",
+          "type": "League",
+          "season": 2021,
+          "logo": "https://media.api-sports.io/basketball/leagues/13.png"
+        },
+        "country": {
+          "id": 5,
+          "name": "USA",
+          "code": "US",
+          "flag": "https://media.api-sports.io/flags/us.svg"
+        },
+        "games": {
+          "played": 32,
+          "win": {
+            "total": 12,
+            "percentage": "0.375"
+          },
+          "lose": {
+            "total": 20,
+            "percentage": "0.625"
+          }
+        },
+        "points": {
+          "for": 2328,
+          "against": 2467
+        },
+        "form": "LWWLL",
+        "description": ""
+      }
+    ]
+  ]
+}

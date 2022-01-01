@@ -18,14 +18,14 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Countries do
 
   describe 'when #by_name' do
     it_behaves_like 'when #by_name', 'Albania',
-                    :response_countries_one_football_data_org, :stringify_keys
+                    :response_countries_one_football_data_org, :response_processed
 
     it 'when error' do
       butler    = Sports::Butler.new(sport: sport, api_name: api_name)
       result    = butler.countries.by_name(name: 'xxx')
 
-      expect(result).to be_a(Hash)
-      expect(result['message']).to eq("xxx could not be found.")
+      expect(result).to be_a(Sports::Butler::Api)
+      expect(result.response_processed['message']).to eq("xxx could not be found.")
     end
   end
 
