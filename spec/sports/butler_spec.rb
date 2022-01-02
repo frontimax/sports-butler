@@ -61,9 +61,9 @@ RSpec.describe Sports::Butler do
     end
   end
 
-  describe 'when show_endpoints' do
-    it "has a version number" do
-      expect(Sports::Butler::show_endpoints).to be_truthy
+  describe 'when Utility endpoints' do
+    it "returns true" do
+      expect(Sports::Butler.show_endpoints).to be_truthy
     end
   end
 

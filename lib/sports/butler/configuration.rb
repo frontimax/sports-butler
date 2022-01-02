@@ -19,10 +19,6 @@ module Sports
         basketball: [:api_basketball_com]
       }
 
-      def initialize
-        # ???
-      end
-
       class << self
         #
         attr_accessor :api_token, :api_endpoint,

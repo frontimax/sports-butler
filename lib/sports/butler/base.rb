@@ -42,8 +42,24 @@ module Sports
         top_scorers: :scorers
       }
 
+      AVAILABLE_ENDPOINTS = {}
+      AVAILABLE_ENDPOINTS = {
+        soccer: {},
+        basketball: {}
+      }
+
+      AVAILABLE_ENDPOINTS[:soccer][:api_football_com] = Dir.
+        glob(File.expand_path("../soccer_api/api_football_com/*.rb", __FILE__))
+      AVAILABLE_ENDPOINTS[:soccer][:apifootball_com] = Dir.
+        glob(File.expand_path("../soccer_api/apifootball_com/*.rb", __FILE__))
+      AVAILABLE_ENDPOINTS[:soccer][:football_data_org] = Dir.
+        glob(File.expand_path("../soccer_api/football_data_org/*.rb", __FILE__))
+
+      AVAILABLE_ENDPOINTS[:basketball][:api_basketball_com] = Dir.
+        glob(File.expand_path("../basketball_api/api_basketball_com/*.rb", __FILE__))
+
       attr_accessor :sport, :api_name, :api_class, :sport_class,
-                    :endpoints, :available_endpoint_methods
+                    :endpoints, :available_endpoints, :available_endpoint_methods
 
       def initialize(sport:, api_name:)
         @sport        = sport
@@ -53,7 +69,8 @@ module Sports
 
         @endpoints    = {}
 
-        @available_endpoint_methods  = get_available_endpoint_methods
+        @available_endpoints  = get_available_endpoints
+        @available_endpoint_methods = get_available_endpoint_methods
       end
 
       def method_missing(method, *args, &block)
@@ -62,16 +79,31 @@ module Sports
           @endpoints[method].present? ?
             @endpoints[method] : @endpoints[method] = build_endpoint_classes(endpoint_name)
         else
-          # TODO: error class with own method_missing!
-          raise StandardError.new(endpoint_not_available(method))
+          raise MissingEndpoint, endpoint_not_available(method)
         end
       end
 
       private
 
-      # TODO! all files of dir > classes & methods!
+      def get_available_endpoints
+        result = []
+
+        AVAILABLE_ENDPOINTS[sport][api_name].each do |path|
+          next if File.basename(path, ".*") == 'base'
+          result << File.basename(path, ".*")
+        end
+
+        result
+      end
+
       def get_available_endpoint_methods
-        []
+        result = {}
+
+        available_endpoints.each do |endpoint|
+          result[endpoint] = self.send(endpoint).available_endpoint_methods
+        end
+
+        result
       end
 
       def eval_endpoint_name(endpoint_name)
@@ -93,6 +125,13 @@ module Sports
 
       def endpoint_not_available(name)
         "NOT AVAILABLE: the endpoint '#{name}' is not available for this sport/api combination."
+      end
+
+    end
+
+    class MissingEndpoint < StandardError
+      def initialize(msg)
+        super
       end
     end
   end
