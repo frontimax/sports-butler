@@ -23,15 +23,15 @@ module Sports
           def by_name(name:, _filters: {})
             api = all
 
-            return api if api.response_processed.is_a?(Hash) &&
-              api.response_processed.with_indifferent_access.dig('message')
+            return api if api.parsed_response.is_a?(Hash) &&
+              api.parsed_response.with_indifferent_access.dig('message')
 
-            country = api.response_processed['areas'].detect { |area| area['name'] == name }
+            country = api.parsed_response['areas'].detect { |area| area['name'] == name }
 
             if country
               by_id(id: country['id'])
             else
-              api.response_processed = not_found_result(name)
+              api.parsed_response = not_found_result(name)
               api
             end
 

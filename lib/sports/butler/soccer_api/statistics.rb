@@ -9,9 +9,9 @@ module Sports
           [:by_match]
         end
 
-        def path
-          :statistics
-        end
+        # def path
+        #   :statistics
+        # end
       end
     end
   end

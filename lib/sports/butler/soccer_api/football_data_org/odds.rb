@@ -15,9 +15,9 @@ module Sports
 
             if response.is_a?(Hash) && response.with_indifferent_access.dig(:match) &&
               response['match'].with_indifferent_access.dig(:odds)
-              api.response_processed = response['match']['odds']
+              api.parsed_response = response['match']['odds']
             else
-              api.response_processed = response
+              api.parsed_response = response
             end
 
             api

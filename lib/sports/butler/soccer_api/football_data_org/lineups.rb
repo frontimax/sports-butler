@@ -18,9 +18,9 @@ module Sports
               lineups['homeTeam'] = response['match']['homeTeam']
               lineups['awayTeam'] = response['match']['awayTeam']
 
-              api.response_processed = lineups
+              api.parsed_response = lineups
             else
-              api.response_processed = response
+              api.parsed_response = response
             end
 
             api

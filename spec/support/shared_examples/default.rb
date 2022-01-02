@@ -33,7 +33,7 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
       when :stringify_keys
         expect(result.response.parsed_response).to include(match.stringify_keys)
       when :response_processed
-        expect(result.response_processed).to include(match.stringify_keys)
+        expect(result.parsed_response).to include(match.stringify_keys)
       else
         expect(result.response.parsed_response[mode.to_s]).to match_array(match[mode])
       end

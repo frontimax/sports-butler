@@ -25,7 +25,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Countries do
       result    = butler.countries.by_name(name: 'xxx')
 
       expect(result).to be_a(Sports::Butler::Api)
-      expect(result.response_processed['message']).to eq("xxx could not be found.")
+      expect(result.parsed_response['message']).to eq("xxx could not be found.")
     end
   end
 

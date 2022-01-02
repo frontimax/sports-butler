@@ -14,9 +14,9 @@ module Sports
             response = api.response.parsed_response
 
             if response.is_a?(Hash) && response.with_indifferent_access.dig(:head2head)
-              api.response_processed = response['head2head']
+              api.parsed_response = response['head2head']
             else
-              api.response_processed = response
+              api.parsed_response = response
             end
 
             api

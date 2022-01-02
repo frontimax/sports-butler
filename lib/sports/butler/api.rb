@@ -6,7 +6,7 @@ module Sports
   module Butler
     class Api < ApiBase
 
-      attr_accessor :response, :response_processed, :success, :errors, :response_code,
+      attr_accessor :response, :parsed_response, :success, :errors, :response_code,
                     :sport, :api_name, :url, :headers, :query
 
       def initialize(sport, api_name)
@@ -27,20 +27,19 @@ module Sports
           return false
         end
 
-        @response = process_http_party(path, filters)
-        @response_code = response.code
+        @response           = process_http_party(path, filters)
+        @response_code      = response.code
+        @success            = true if response_code == 200
+        @parsed_response    = process_response(response)
 
-        # TODO: errors!
-        # method handling
-        @success  = true if response_code == 200
-
-        @response_processed = process_response(response)
+        true
       end
 
       def process_http_party(path, filters)
         @headers  = Configuration.http_party_headers(sport, api_name)
         @url      = Configuration.http_party_url(path, sport, api_name)
         @query    = filters || {}
+
         http_party_get
       end
 
@@ -48,7 +47,6 @@ module Sports
         if response.parsed_response.is_a?(Hash) && response.dig('message')
           error_message(response['message'])
         else
-          # TODO: Configuration.http_party_response(response)
           response.parsed_response
         end
       end
@@ -58,10 +56,12 @@ module Sports
       end
 
       def http_party_get
-        HTTParty.get "#{url}",
-                     headers: headers,
-                     query: query,
-                     format: :json
+        HTTParty.get(
+          "#{url}",
+          headers: headers,
+          query: query,
+          format: :json
+        )
       end
 
       class << self

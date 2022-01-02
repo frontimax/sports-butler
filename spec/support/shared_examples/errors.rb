@@ -21,7 +21,7 @@ shared_examples 'when error_missing_resource' do |meth, query, mode = :default|
     case mode
     when :response_processed
       expect(result).to be_a(Sports::Butler::Api)
-      expect(result.response_processed['message']).to eq("The resource you are looking for does not exist.")
+      expect(result.parsed_response['message']).to eq("The resource you are looking for does not exist.")
     when :hash
       expect(result).to be_a(Hash)
       expect(result['message']).to eq("The resource you are looking for does not exist.")
