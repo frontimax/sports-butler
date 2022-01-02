@@ -10,20 +10,12 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
       result  = butler.send(endpoint).send(meth)
     end
 
-    # TODO: remove debuggers!
-    # debugger
-
     match = eval(compare.to_s)
-
     expect(result).to be_a(result_compare)
 
     if result_compare == Sports::Butler::Api
-      # debugger
-
       expect(result.response).to be_a(HTTParty::Response)
       expect(result.response.parsed_response).to be_a(response_type)
-
-      # debugger
 
       case mode
       when :parsed_response
@@ -38,7 +30,6 @@ shared_examples 'when endpoint method' do |compare:, meth:, params: nil, mode: :
         expect(result.response.parsed_response[mode.to_s]).to match_array(match[mode])
       end
     else
-      # Hash
       expect(result).to include(match.stringify_keys)
     end
   end
@@ -85,7 +76,8 @@ shared_examples 'when #by_match_array' do |match_id, compare, mode = :response|
 end
 
 shared_examples 'when #by_match_with_range' do |match_id, from, to, compare, mode = :response|
-  it_behaves_like 'when endpoint method', compare: compare, meth: :by_match_with_range, params: { match_id: match_id, from: from, to: to },
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_match_with_range,
+                  params: { match_id: match_id, from: from, to: to },
                   mode: mode
 end
 
@@ -183,7 +175,8 @@ shared_examples 'when #by_code' do |code, compare, mode = :response|
                   params: { code: code }, mode: mode
 end
 
-shared_examples 'when #by_competition_and_team_and_season' do |competition_id, team_id, season, compare, mode = :response|
+shared_examples 'when #by_competition_and_team_and_season' do
+|competition_id, team_id, season, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition_and_team_and_season,
                   params: { competition_id: competition_id, team_id: team_id, season: season }, mode: mode
 end
