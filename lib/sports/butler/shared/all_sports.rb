@@ -19,10 +19,10 @@ module Sports
           api
         end
 
-        def by_country_name(name: , filters: {})
+        def by_country_name(country_name: , filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!({ country: name })
+          filters.merge!({ country: country_name })
           api.get(path: build_path(path), filters: filters)
           api
         end
@@ -35,10 +35,10 @@ module Sports
           api
         end
 
-        def by_match(id: , filters: {})
+        def by_match(match_id: , filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!(filters_by_match(id))
+          filters.merge!(filters_by_match(match_id))
           api.get(path: build_path(path), filters: filters)
           api
         end
@@ -51,10 +51,10 @@ module Sports
           api
         end
 
-        def by_competition(id:, filters: {})
+        def by_competition(competition_id:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!(filters_by_competition(id))
+          filters.merge!(filters_by_competition(competition_id))
           api.get(path: build_path(path), filters: filters)
           api
         end
@@ -99,10 +99,10 @@ module Sports
           api
         end
 
-        def by_competition_and_year(id:, year:, filters: {})
+        def by_competition_and_year(competition_id:, year:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          filters.merge!(filters_by_competition_and_year(id, year))
+          filters.merge!(filters_by_competition_and_year(competition_id, year))
           api.get(path: build_path(path), filters: filters)
           api
         end

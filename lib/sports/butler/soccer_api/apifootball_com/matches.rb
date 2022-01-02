@@ -17,10 +17,10 @@ module Sports
             :get_events
           end
 
-          def by_competition_and_year(id:, year:, filters: {})
+          def by_competition_and_year(competition_id:, year:, filters: {})
             from  = "#{year}-01-01"
             to    = "#{year}-12-31"
-            filters.merge!({ league_id: id, from: from, to: to })
+            filters.merge!({ league_id: competition_id, from: from, to: to })
             api.get(path: build_path(path), filters: filters)
             api
           end

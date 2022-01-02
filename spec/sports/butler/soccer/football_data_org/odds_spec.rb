@@ -21,7 +21,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Odds do
   end
 
   describe 'error message' do
-    it_behaves_like 'when error_missing_resource', :by_match, { id: 99 }
+    it_behaves_like 'when error_missing_resource', :by_match, { match_id: 99 }
   end
 end
 

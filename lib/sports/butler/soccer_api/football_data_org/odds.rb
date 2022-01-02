@@ -9,8 +9,8 @@ module Sports
             [:by_match]
           end
 
-          def by_match(id:, filters: {})
-            api.get(path: "#{path}/#{id}", filters: filters)
+          def by_match(match_id:, filters: {})
+            api.get(path: "#{path}/#{match_id}", filters: filters)
             response = api.response.parsed_response
 
             if response.is_a?(Hash) && response.with_indifferent_access.dig(:match) &&

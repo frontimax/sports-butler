@@ -17,7 +17,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Odds do
   end
 
   describe 'when #by_match' do
-    it_behaves_like 'when error_missing_endpoint', :by_match, { id: 86392 }
+    it_behaves_like 'when error_missing_endpoint', :by_match, { match_id: 86392 }
   end
 end
 

@@ -21,7 +21,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::HeadToHead do
   end
 
   describe 'error message' do
-    it_behaves_like 'when error_missing_resource', :by_match, { id: 99 }, :response_processed
+    it_behaves_like 'when error_missing_resource', :by_match, { match_id: 99 }, :response_processed
   end
 end
 

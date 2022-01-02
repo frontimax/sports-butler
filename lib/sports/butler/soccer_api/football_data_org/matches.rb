@@ -22,14 +22,14 @@ module Sports
             api_with_id(id, filters)
           end
 
-          def by_competition(id:, filters: {})
-            api.get(path: "competitions/#{id}/#{path}", filters: filters)
+          def by_competition(competition_id:, filters: {})
+            api.get(path: "competitions/#{competition_id}/#{path}", filters: filters)
             api
           end
 
-          def by_competition_and_year(id:, year:, filters: {})
+          def by_competition_and_year(competition_id:, year:, filters: {})
             filters.merge!({ season: year })
-            api.get(path: "competitions/#{id}/#{path}", filters: filters)
+            api.get(path: "competitions/#{competition_id}/#{path}", filters: filters)
             api
           end
 

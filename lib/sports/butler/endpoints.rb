@@ -24,6 +24,7 @@ module Sports
         "The method '#{meth}' is not available for endpoint '#{self.class.name.demodulize}' in API #{self.api_name}."
       end
 
+
       # param names
       def filters_by_match(id)
         { id: id }
@@ -57,6 +58,7 @@ module Sports
         { name: name }
       end
 
+      # TODO: remove?
       # def filters_by_competition_and_team_and_season(competition_id, team_id, season)
       #   { competition_id: competition_id, team_id: team_id, season: season }
       # end
