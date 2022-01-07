@@ -28,13 +28,13 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Injuries do
 end
 
 def stubs_injuries_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/injuries?id=1540")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/injuries?id=1540")
     .to_return(status: 200, body: get_mocked_response('injuries.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/injuries?league=1540&season=2021")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/injuries?league=1540&season=2021")
     .to_return(status: 200, body: get_mocked_response('injuries.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/injuries?team=2210&season=2021")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/injuries?team=2210&season=2021")
     .to_return(status: 200, body: get_mocked_response('injuries.json', sport, api_name))
 end
 

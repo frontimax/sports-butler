@@ -22,7 +22,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Odds do
 end
 
 def stubs_odds_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_odds&match_id=86392&from=2021-05-22&to=2021-05-22")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_odds&match_id=86392&from=2021-05-22&to=2021-05-22")
     .to_return(status: 200, body: get_mocked_response('odds.json', sport, api_name))
 end
 

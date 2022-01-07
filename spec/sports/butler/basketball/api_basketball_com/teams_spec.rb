@@ -38,22 +38,22 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Teams do
 end
 
 def stubs_teams_api_basketball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams")
     .to_return(status: 200, body: get_mocked_response('teams.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams?id=39")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams?id=39")
     .to_return(status: 200, body: get_mocked_response('team.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams?name=Nunawading")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams?name=Nunawading")
     .to_return(status: 200, body: get_mocked_response('team.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams?league=1")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams?league=1")
     .to_return(status: 200, body: get_mocked_response('teams.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams?season=2020")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams?season=2020")
     .to_return(status: 200, body: get_mocked_response('teams.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams?search=Nunaw")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams?search=Nunaw")
     .to_return(status: 200, body: get_mocked_response('teams.json', sport, api_name))
 end
 

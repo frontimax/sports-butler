@@ -38,7 +38,7 @@ end
 ## ----------------------->
 
 shared_examples 'when #all' do |compare, mode = :response|
-  it_behaves_like 'when endpoint method', compare: compare, meth: :all, mode: mode
+  it_behaves_like 'when endpoint method', compare: compare, meth: :all, params: { }, mode: mode
 end
 
 shared_examples 'when #by_name' do |name, compare, mode = :response|

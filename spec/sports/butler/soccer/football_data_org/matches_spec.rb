@@ -53,25 +53,25 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Matches do
 end
 
 def stubs_matches_football_data_org
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/2002")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/matches/2002")
     .to_return(status: 200, body: get_mocked_response('match.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/matches")
     .to_return(status: 200, body: get_mocked_response('matches_more.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/competitions/2002/matches")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions/2002/matches")
     .to_return(status: 200, body: get_mocked_response('matches_more.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/competitions/2002/matches?season=2020")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions/2002/matches?season=2020")
     .to_return(status: 200, body: get_mocked_response('matches_more.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams/2002/matches")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams/2002/matches")
     .to_return(status: 200, body: get_mocked_response('matches_more.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams/2002/matches?status=#{described_class::STATUS_FINISHED}")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams/2002/matches?status=#{described_class::STATUS_FINISHED}")
     .to_return(status: 200, body: get_mocked_response('matches_more.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams/2002/matches?status=#{described_class::STATUS_SCHEDULED}")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams/2002/matches?status=#{described_class::STATUS_SCHEDULED}")
     .to_return(status: 200, body: get_mocked_response('matches_more.json', sport, api_name))
 end
 

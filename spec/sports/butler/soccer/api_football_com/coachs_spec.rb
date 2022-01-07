@@ -28,13 +28,13 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Coachs do
 end
 
 def stubs_coachs_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/coachs?id=1540")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/coachs?id=1540")
     .to_return(status: 200, body: get_mocked_response('coachs.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/coachs?name=Rose")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/coachs?name=Rose")
     .to_return(status: 200, body: get_mocked_response('coachs.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/coachs?team=1540")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/coachs?team=1540")
     .to_return(status: 200, body: get_mocked_response('coachs.json', sport, api_name))
 end
 

@@ -59,7 +59,7 @@ module Sports
         glob(File.expand_path("../basketball_api/api_basketball_com/*.rb", __FILE__))
 
       attr_accessor :sport, :api_name, :api_class, :sport_class,
-                    :endpoints, :available_endpoints, :available_endpoint_methods
+                    :endpoints, :available_endpoints
 
       def initialize(sport:, api_name:)
         @sport        = sport
@@ -70,7 +70,6 @@ module Sports
         @endpoints    = {}
 
         @available_endpoints  = get_available_endpoints
-        @available_endpoint_methods = get_available_endpoint_methods
       end
 
       def method_missing(method, *args, &block)
@@ -86,21 +85,20 @@ module Sports
       private
 
       def get_available_endpoints
-        result = []
+        result = {}.with_indifferent_access
 
         AVAILABLE_ENDPOINTS[sport][api_name].each do |path|
           next if File.basename(path, ".*") == 'base'
-          result << File.basename(path, ".*")
-        end
 
-        result
-      end
+          endpoint = File.basename(path, ".*")
+          endpoint_methods = self.send(endpoint).available_endpoint_methods
 
-      def get_available_endpoint_methods
-        result = {}
+          result_endpoints = {}.with_indifferent_access
+          endpoint_methods.each do |endpoint_method|
+            result_endpoints[endpoint_method] = self.send(endpoint).method(endpoint_method).parameters
+          end
 
-        available_endpoints.each do |endpoint|
-          result[endpoint] = self.send(endpoint).available_endpoint_methods
+          result[endpoint] = result_endpoints
         end
 
         result

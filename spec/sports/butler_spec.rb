@@ -4,8 +4,8 @@ RSpec.describe Sports::Butler do
       config.api_token = { soccer: {}, basketball: {} }
       config.api_token[:soccer][:api_football_com]  = 'my_dummy_token'
 
-      config.api_endpoint = { soccer: {}, basketball: {} }
-      config.api_endpoint[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
+      config.api_base_url = { soccer: {}, basketball: {} }
+      config.api_base_url[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
     end
 
     stubs_butler
@@ -39,7 +39,7 @@ RSpec.describe Sports::Butler do
 
   describe 'when class method #get' do
     it 'returns result' do
-      url = "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?name=Albania"
+      url = "#{Sports::Butler::Configuration.api_base_url[:soccer][:api_football_com]}/countries?name=Albania"
       butler = described_class.get(url: url)
 
       expect(butler).to be_a(HTTParty::Response)
@@ -78,8 +78,8 @@ RSpec.describe Sports::Butler do
       Sports::Butler::Configuration.configure do |config|
         config.api_token = { soccer: {}, basketball: {} }
 
-        config.api_endpoint = { soccer: {}, basketball: {} }
-        config.api_endpoint[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
+        config.api_base_url = { soccer: {}, basketball: {} }
+        config.api_base_url[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
       end
 
       stubs_butler
@@ -92,15 +92,15 @@ RSpec.describe Sports::Butler do
       
       butler.countries.by_name(name: 'Albania')
       expect(butler.countries.api.success).to be_falsey
-      expect(butler.countries.api.response[:message]).to eq('Invalid Configuration, check empty api_token or empty / invalid api_endpoint!')
+      expect(butler.countries.api.response[:message]).to eq('Invalid Configuration, check empty api_token or empty / invalid api_base_url!')
     end
   end
 end
 
 def stubs_butler
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?phone=Albania")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[:soccer][:api_football_com]}/countries?phone=Albania")
     .to_return(status: 200, body: get_mocked_response('country.json', :soccer, :api_football_com))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[:soccer][:api_football_com]}/countries?name=Albania")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[:soccer][:api_football_com]}/countries?name=Albania")
     .to_return(status: 200, body: get_mocked_response('country.json', :soccer, :api_football_com))
 end

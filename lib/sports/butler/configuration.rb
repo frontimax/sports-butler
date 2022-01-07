@@ -20,8 +20,8 @@ module Sports
       }
 
       class << self
-        #
-        attr_accessor :api_token, :api_endpoint,
+
+        attr_accessor :api_token, :api_base_url,
                       :header_token_name, :header_additional
 
         def configure
@@ -30,7 +30,7 @@ module Sports
           yield self
 
           @api_token  ||= default_api_hash
-          @api_endpoint  ||= default_api_hash
+          @api_base_url  ||= default_api_hash
 
           @header_token_name ||= set_header_token_name
           @header_additional ||= {}
@@ -61,9 +61,9 @@ module Sports
         def http_party_url(path, sport, api_name)
           case api_name
           when :apifootball_com
-            "#{Configuration.api_endpoint[sport][api_name]}?#{path}&APIkey=#{Configuration.api_token[sport][api_name]}"
+            "#{Configuration.api_base_url[sport][api_name]}?#{path}&APIkey=#{Configuration.api_token[sport][api_name]}"
           else
-            "#{Configuration.api_endpoint[sport][api_name]}/#{path}"
+            "#{Configuration.api_base_url[sport][api_name]}/#{path}"
           end
         end
 

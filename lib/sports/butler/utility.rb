@@ -69,6 +69,7 @@ module Sports
               table = Terminal::Table.new rows: rows_meths
               table.title = "Endpoint #{endpoint} [#{sport}]"
               table.headings = ['Method'] + rows_apis
+
               print magenta, table
 
               linebreak

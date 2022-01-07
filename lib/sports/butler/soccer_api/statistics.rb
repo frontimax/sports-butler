@@ -8,10 +8,6 @@ module Sports
         def available_endpoint_methods
           [:by_match]
         end
-
-        # def path
-        #   :statistics
-        # end
       end
     end
   end

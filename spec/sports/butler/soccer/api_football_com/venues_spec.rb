@@ -18,7 +18,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Venues do
 end
 
 def stubs_venues_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/venues?id=745")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/venues?id=745")
     .to_return(status: 200, body: get_mocked_response('venue.json', sport, api_name))
 end
 

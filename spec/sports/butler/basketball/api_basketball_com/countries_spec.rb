@@ -38,19 +38,19 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Countries do
 end
 
 def stubs_countries_api_basketball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?name=Germany")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries?name=Germany")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries")
     .to_return(status: 200, body: get_mocked_response('countries.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?id=17")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries?id=17")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?code=DE")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries?code=DE")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?search=Germ")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries?search=Germ")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 end
 

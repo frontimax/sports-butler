@@ -18,7 +18,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Scorers do
 end
 
 def stubs_scorers_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/players/topscorers?league=78&season=2020")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/players/topscorers?league=78&season=2020")
     .to_return(status: 200, body: get_mocked_response('scorers.json', sport, api_name))
 end
 

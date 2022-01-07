@@ -27,13 +27,13 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Matches do
 end
 
 def stubs_matches_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/fixtures?id=587177")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/fixtures?id=587177")
     .to_return(status: 200, body: get_mocked_response('match.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/fixtures?league=587177&season=2020")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/fixtures?league=587177&season=2020")
     .to_return(status: 200, body: get_mocked_response('match.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/fixtures")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/fixtures")
     .to_return(status: 200, body: get_mocked_response('matches.json', sport, api_name))
 end
 

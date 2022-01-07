@@ -23,10 +23,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Sidelineds do
 end
 
 def stubs_sidelineds_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/sidelined?player=25333")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/sidelined?player=25333")
     .to_return(status: 200, body: get_mocked_response('sidelineds.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/sidelined?coach=1")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/sidelined?coach=1")
     .to_return(status: 200, body: get_mocked_response('sidelineds.json', sport, api_name))
 end
 

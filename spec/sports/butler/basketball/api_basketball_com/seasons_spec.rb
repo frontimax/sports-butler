@@ -17,7 +17,7 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Seasons do
 end
 
 def stubs_seasons_api_basketball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/seasons")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/seasons")
     .to_return(status: 200, body: get_mocked_response('seasons.json', sport, api_name))
 end
 

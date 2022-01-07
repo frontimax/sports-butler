@@ -26,10 +26,10 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Competitions do
 end
 
 def stubs_competitions_football_data_org
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/competitions")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions")
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/competitions/78")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions/78")
     .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
 end
 

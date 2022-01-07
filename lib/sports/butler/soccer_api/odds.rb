@@ -5,10 +5,6 @@ module Sports
   module Butler
     module SoccerApi
       class Odds < Sports::Butler::SoccerApi::Base
-        # def available_endpoint_methods
-        #   [:by_match, :by_match_with_range]
-        # end
-
         def path
           :matches
         end

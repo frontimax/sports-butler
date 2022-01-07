@@ -26,10 +26,10 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::HeadToHead do
 end
 
 def stubs_head_to_head_football_data_org
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/78")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/matches/78")
     .to_return(status: 200, body: get_mocked_response('head_to_head.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/matches/99")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/matches/99")
     .to_return(status: 200, body: get_mocked_response('resource_missing.json', sport, api_name))
 end
 

@@ -5,7 +5,6 @@ module Sports
   module Butler
     module BasketballApi
       class Competitions < Sports::Butler::BasketballApi::Base
-
       end
     end
   end

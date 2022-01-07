@@ -18,7 +18,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Scorers do
 end
 
 def stubs_scorers_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_topscorers&competition_id=302")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_topscorers&competition_id=302")
     .to_return(status: 200, body: get_mocked_response('scorers.json', sport, api_name))
 end
 

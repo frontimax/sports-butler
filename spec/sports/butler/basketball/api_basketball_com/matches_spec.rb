@@ -26,13 +26,13 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Matches do
 end
 
 def stubs_matches_api_basketball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/games")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/games")
     .to_return(status: 200, body: get_mocked_response('matches.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/games?league=13&season=2021")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/games?league=13&season=2021")
     .to_return(status: 200, body: get_mocked_response('matches.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/games?id=126634")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/games?id=126634")
     .to_return(status: 200, body: get_mocked_response('match.json', sport, api_name))
 end
 

@@ -40,10 +40,10 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Countries do
 end
 
 def stubs_countries_football_data_org
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/areas/2002")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/areas/2002")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/areas")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/areas")
     .to_return(status: 200, body: get_mocked_response('countries.json', sport, api_name))
 end
 

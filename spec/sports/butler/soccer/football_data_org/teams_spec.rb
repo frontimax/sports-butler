@@ -18,7 +18,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Teams do
 end
 
 def stubs_teams_football_data_org
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/teams/18")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/teams/18")
     .to_return(status: 200, body: get_mocked_response('team.json', sport, api_name))
 end
 

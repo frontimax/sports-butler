@@ -5,10 +5,6 @@ module Sports
   module Butler
     module BasketballApi
       class Countries < Sports::Butler::BasketballApi::Base
-        # def available_endpoint_methods
-        #   [:all, :by_name, :by_id, :by_code, :search_by_name]
-        # end
-
         def path
           :countries
         end

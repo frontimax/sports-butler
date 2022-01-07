@@ -17,7 +17,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Timezones do
 end
 
 def stubs_timezones_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/timezones")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/timezones")
     .to_return(status: 200, body: get_mocked_response('timezones.json', sport, api_name))
 end
 

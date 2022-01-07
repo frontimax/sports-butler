@@ -7,7 +7,6 @@ module Sports
       class Venues < Sports::Butler::SoccerApi::Base
         def available_endpoint_methods
           [:by_id]
-          # by_city, by_country, by_name, search
         end
 
         def path

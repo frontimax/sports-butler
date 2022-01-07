@@ -3,16 +3,15 @@ module Sports
     module Shared
       module AllSports
 
-        def all
+        def all(filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 
-          api.get(path: build_path(path))
+          api.get(path: build_path(path), filters: filters)
           api
         end
 
         def by_name(name: , filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
-
 
           filters.merge!({ name: name })
           api.get(path: build_path(path), filters: filters)
@@ -108,6 +107,8 @@ module Sports
         end
 
         def by_teams(team_id:, second_team_id:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
           filters.merge!(filters_by_teams(team_id, second_team_id))
           api.get(path: build_path(path), filters: filters)
           api

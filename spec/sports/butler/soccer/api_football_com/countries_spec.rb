@@ -34,13 +34,13 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Countries do
 end
 
 def stubs_countries_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?name=Albania")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries?name=Albania")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries")
     .to_return(status: 200, body: get_mocked_response('countries.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/countries?name=Alb")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/countries?name=Alb")
     .to_return(status: 200, body: get_mocked_response('country.json', sport, api_name))
 end
 

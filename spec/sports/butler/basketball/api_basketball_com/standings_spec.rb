@@ -22,7 +22,7 @@ RSpec.describe Sports::Butler::BasketballApi::ApiBasketballCom::Standings do
 end
 
 def stubs_standings_api_basketball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/standings?season=2020&league=1&team=1")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/standings?season=2020&league=1&team=1")
     .to_return(status: 200, body: get_mocked_response('standings.json', sport, api_name))
 end
 

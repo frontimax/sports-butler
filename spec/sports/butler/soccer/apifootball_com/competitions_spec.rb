@@ -30,10 +30,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Competitions do
 end
 
 def stubs_competitions_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_leagues")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_leagues")
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_leagues&country_id=41")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_leagues&country_id=41")
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 end
 

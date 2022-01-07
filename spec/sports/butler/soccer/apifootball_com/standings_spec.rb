@@ -22,7 +22,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Standings do
 end
 
 def stubs_standings_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_standings&league_id=149")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_standings&league_id=149")
     .to_return(status: 200, body: get_mocked_response('standings.json', sport, api_name))
 end
 

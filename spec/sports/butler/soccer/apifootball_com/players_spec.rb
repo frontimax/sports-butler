@@ -27,10 +27,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Players do
 end
 
 def stubs_players_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_players&player_id=4068429598")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_players&player_id=4068429598")
     .to_return(status: 200, body: get_mocked_response('player.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/?APIkey=my_dummy_token&action=get_players&player_name=El Mhamdi Salaheddine")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_players&player_name=El Mhamdi Salaheddine")
     .to_return(status: 200, body: get_mocked_response('player.json', sport, api_name))
 end
 

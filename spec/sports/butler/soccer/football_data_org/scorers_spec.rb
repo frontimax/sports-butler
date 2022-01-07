@@ -22,7 +22,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Scorers do
 end
 
 def stubs_scorers_football_data_org
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/competitions/2002/scorers")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions/2002/scorers")
     .to_return(status: 200, body: get_mocked_response('scorers.json', sport, api_name))
 end
 

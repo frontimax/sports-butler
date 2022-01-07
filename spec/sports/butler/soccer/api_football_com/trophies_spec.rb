@@ -24,10 +24,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApiFootballCom::Trophies do
 end
 
 def stubs_trophies_api_football_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/trophies?player=1540")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/trophies?player=1540")
     .to_return(status: 200, body: get_mocked_response('trophies.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_endpoint[sport][api_name]}/trophies?coach=2210")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/trophies?coach=2210")
     .to_return(status: 200, body: get_mocked_response('trophies.json', sport, api_name))
 end
 
