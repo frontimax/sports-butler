@@ -91,34 +91,13 @@ This is a complete config example for all 4 supported APIs (2 sports):
 
 Configuration explained:
 
-    @api_token ||= default_api_hash # { soccer: {}, basketball: {} }
+| Attribute | Explanation |
+| ---------------|----------------|
+| **@api_token # default_api_hash # { soccer: {}, basketball: {} }** | The API Token is provided by your API Host.As this is a multiple sports multiple API Gem you have to fill the Hash accordingly. At least one api token for one API is required. |
+| **@api_base_url # default_api_hash # { soccer: {}, basketball: {} }** | The API base url is provided by your API Host. As this is a multiple sports multiple API Gem you have to fill the Hash accordingly. At least one api token for one API is required. |
+| **@header_token_name # set_header_token_name** | Default header token setting. Can be overwritten. |
+| **@header_additional # {}** | Additional (optional) header key/value pairs to be added. |
 
-The API Token is provided by your API Host. 
-As this is a multiple sports multiple API Gem you have to fill the Hash accordingly.    
-At least one api token for one API is required.
-
-    @api_base_url  ||= default_api_hash # { soccer: {}, basketball: {} }
-
-The API base url is provided by your API Host. 
-As this is a multiple sports multiple API Gem you have to fill the Hash accordingly.
-At least one api token for one API is required.
-
-    @header_token_name ||= set_header_token_name
-    # {
-        soccer: {
-          football_data_org: 'X-Auth-Token',
-          api_football_com: 'x-apisports-key'
-        },
-        basketball: {
-          api_basketball_com: 'x-apisports-key'
-        }
-      }
-
-Default header token setting. Can be overwritten.
-
-    @header_additional ||= {}
-
-Additional header key/value pairs to be added.
 
 ## Usage
 
@@ -150,7 +129,7 @@ The result is always the last API object:
 
 ## Usage without endpoint methods (direct calls)
 
-As in footbal butler you may also call the url withs params directly, espacially if an endpoint class or method is missing 
+As in footbal butler you may also call the url withs params directly, especially if an endpoint class or method is missing 
 in this gem:
 
 ### TODO: configuration not invoked yet!
@@ -159,29 +138,15 @@ in this gem:
 
 ## Error Messages
 
+List of possible errors from sports butler itself (not from the API):
+
 | Error Message | Explanation |
 | ---------------|----------------|
 | **You need to configure sports-butler first, see readme.** | You didnt deliver a configuration block (api token and/or base url), see above. |
+| **Invalid sport / api parameter. Available sports: soccer, basketball. Available apis: football_data_org, apifootball_com, api_football_com, api_basketball_com** | When you enter an invalid sport / api combination (see Sports::Butler::Configuration::AVAILABLE_SPORT_API for reference) |
+| **NOT AVAILABLE: the endpoint 'bazinga' is not available for this sport/api combination.** | When you called an invalid endpoint class. |
+| **You need to configure sports-butler first, see readme.** | When you called an invalid method on an endpoint class. |
 
-List of possible errors from sports butler itself (not from the API):
-    
-    You need to configure sports-butler first, see readme.
-
-You didnt deliver a configuration block (api token and/or base url), see above.
-
-    Invalid sport / api parameter. Available sports: soccer, basketball. Available apis: football_data_org, apifootball_com, api_football_com, api_basketball_com
-
-When you enter an invalid sport / api combination (see Sports::Butler::Configuration::AVAILABLE_SPORT_API for reference)
-
-    NOT AVAILABLE: the endpoint 'bazinga' is not available for this sport/api combination.
-
-When you called an invalid endpoint class.
-
-    The method '#{meth}' is not available for endpoint '#{described_class.name.demodulize}' in API #{api_name}.
-
-When you called an invalid method on an endpoint class.
-
-    
 ## sports butler objects explained
 
 The sports butler object:
