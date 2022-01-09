@@ -67,6 +67,15 @@ module Sports
           end
         end
 
+        def http_party_url_suffix(url, sport, api_name)
+          case api_name
+          when :apifootball_com
+            "#{url}&APIkey=#{Configuration.api_token[sport][api_name]}"
+          else
+            "#{url}"
+          end
+        end
+
         def http_party_headers(sport, api_name)
           result = case api_name
 

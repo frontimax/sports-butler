@@ -64,8 +64,19 @@ module Sports
         )
       end
 
+      # direct calls
       class << self
-        def get(url:, filters: {}, headers: {})
+        def get(url:, sport: nil, api_name: nil, filters: {}, headers: {})
+
+          if sport && api_name
+            if Configuration.invalid_config?(sport, api_name)
+              return Sports::Butler::ApiBase.invalid_config_result
+            end
+
+            headers  = Configuration.http_party_headers(sport, api_name)
+            url      = Configuration.http_party_url_suffix(url, sport, api_name)
+          end
+
           query   = filters || {}
 
           HTTParty.get "#{url}",

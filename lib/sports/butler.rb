@@ -26,8 +26,8 @@ module Sports
       end
 
       # Sports::Butler direct API call without Endpoint Classes
-      def get(url:, filters: {})
-        Api.get(url: url, filters: filters)
+      def get(url:, sport: nil, api_name: nil, filters: {}, headers: {})
+        Api.get(url: url, sport: sport, api_name: api_name, filters: filters, headers: headers)
       end
 
       # Sports::Butler show all endpoints in console output (info)

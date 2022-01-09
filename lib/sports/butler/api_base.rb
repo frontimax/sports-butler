@@ -3,7 +3,7 @@
 module Sports
   module Butler
     class ApiBase
-      MSG_INVALID_CONFIG  = 'Invalid Configuration, check empty api_token or empty / invalid api_base_url!'
+      MSG_INVALID_CONFIG  = 'Invalid Configuration, check empty api_token or empty / invalid api_base_url.'
 
       class << self
         def invalid_config_result

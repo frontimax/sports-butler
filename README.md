@@ -3,8 +3,7 @@
 ![Image of Yaktocat](https://www.sports-butler.de/wp-content/uploads/2021/12/cropped-sb_logo_01_512px.png)
 
 [![Build Status](https://app.travis-ci.com/frontimax/sports-butler.svg?token=kdzGtbwhXCggiYUeL5pd&branch=main&status=errored)](https://travis-ci.com/frontimax/sports-butler)
-# TODO: football-butler !!!
-[![codecov](https://codecov.io/gh/frontimax/football-butler/branch/main/graph/badge.svg?token=GBV4PK62WC)](https://codecov.io/gh/frontimax/football-butler)
+[![codecov](https://codecov.io/gh/frontimax/sports-butler/branch/main/graph/badge.svg?token=38e8a3b0-dfc4-4ffc-9202-29c51a6c033b)](https://codecov.io/gh/frontimax/sports-butler)
 
 This gem enables API requests against multiple different sports APIs.
 
@@ -134,7 +133,50 @@ in this gem:
 
 ### TODO: configuration not invoked yet!
 
-    Sports::Butler.get()
+Sports::Butler.get(url:, sport: nil, api_name: nil, filters: {}, headers: {})
+
+
+
+    TODO: error butler.teams.by_id(id: 1) ???
+    Sports::Butler.get(url: 'https://v3.football.api-sports.io/teams?id=39')
+
+Optional params:
+
+    
+
+Without Configuration of header token, e.g.::
+
+    Sports::Butler.get(
+        url: 'https://v3.football.api-sports.io/teams?id=39', 
+        headers: { "x-apisports-key": '<YOUR_TOKEN>'}
+    )
+
+It will always return the HTTParty::Response object, e.g.:
+
+    {
+        "get"=>"teams",
+        "parameters"=>{"id"=>"39"},
+        "errors"=>[],
+        "results"=>1,
+        "paging"=>{"current"=>1, "total"=>1},
+        "response"=>
+        [{"team"=>
+        {"id"=>39,
+        "name"=>"Wolves",
+        "country"=>"England",
+        "founded"=>1877,
+        "national"=>false,
+        "logo"=>"https://media.api-sports.io/football/teams/39.png"},
+        "venue"=>
+        {"id"=>600,
+        "name"=>"Molineux Stadium",
+        "address"=>"Waterloo Road",
+        "city"=>"Wolverhampton, West Midlands",
+        "capacity"=>32050,
+        "surface"=>"grass",
+        "image"=>"https://media.api-sports.io/football/venues/600.png"}}]
+    }
+
 
 ## Error Messages
 
@@ -145,21 +187,34 @@ List of possible errors from sports butler itself (not from the API):
 | **You need to configure sports-butler first, see readme.** | You didnt deliver a configuration block (api token and/or base url), see above. |
 | **Invalid sport / api parameter. Available sports: soccer, basketball. Available apis: football_data_org, apifootball_com, api_football_com, api_basketball_com** | When you enter an invalid sport / api combination (see Sports::Butler::Configuration::AVAILABLE_SPORT_API for reference) |
 | **NOT AVAILABLE: the endpoint 'bazinga' is not available for this sport/api combination.** | When you called an invalid endpoint class. |
-| **You need to configure sports-butler first, see readme.** | When you called an invalid method on an endpoint class. |
+| **The method 'bazinga' is not available for endpoint 'countries' in API api_football_com.** | When you called an invalid method on an endpoint class. |
+| **Invalid Configuration, check empty api_token or empty / invalid api_base_url.** | API token ist empty or base url is invalid. |
+| **Country could not be found.** | The ressource could not be found on an endpoint method. |
 
 ## sports butler objects explained
 
 The sports butler object:
 
-    n/a
+| Attribute | Explanation |
+| ---------------|----------------|
+| **@api_class** | e.g. ApiFootballCom |
+| **@api_name** | e.g. :api_football_com |
+| **@sport** | e.g. :soccer |
+| **@sport_class** | e.g. SoccerApi |
+| **@available_endpoint** | Show all available endpoints and endpoint methods for this API |
+| **@endpoints** | All pre-build classes for all available endpoint classes |
 
 The endpoint objects:
 
-    n/a
+| Attribute | Explanation |
+| ---------------|----------------|
+tba
 
 The API objects
 
-    n/a
+| Attribute | Explanation |
+| ---------------|----------------|
+tba
 
 ## Differences to previous gem football-butler
 

@@ -3,9 +3,11 @@ RSpec.describe Sports::Butler do
     Sports::Butler::Configuration.configure do |config|
       config.api_token = { soccer: {}, basketball: {} }
       config.api_token[:soccer][:api_football_com]  = 'my_dummy_token'
+      config.api_token[:soccer][:apifootball_com]  = 'my_dummy_token'
 
       config.api_base_url = { soccer: {}, basketball: {} }
       config.api_base_url[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
+      config.api_base_url[:soccer][:apifootball_com]  = 'https://apiv3.apifootball.com/'
     end
 
     stubs_butler
@@ -46,6 +48,28 @@ RSpec.describe Sports::Butler do
       expect(butler.parsed_response).to be_a(Hash)
       expect(butler.parsed_response['response']).to be_a(Array)
       expect(butler.parsed_response['response'].first['name']).to eq('Albania')
+    end
+
+    it 'returns result with params' do
+      url = "#{Sports::Butler::Configuration.api_base_url[:soccer][:api_football_com]}/countries?name=Albania"
+      butler = described_class.get(url: url, sport: :soccer, api_name: :api_football_com)
+
+      expect(butler).to be_a(HTTParty::Response)
+      expect(butler.parsed_response).to be_a(Hash)
+      expect(butler.parsed_response['response']).to be_a(Array)
+      expect(butler.parsed_response['response'].first['name']).to eq('Albania')
+
+      butler = described_class.get(url: url, sport: :soccer, api_name: :apifootball_com)
+
+      expect(butler).to be_a(HTTParty::Response)
+    end
+
+    it 'returns error' do
+      url = "#{Sports::Butler::Configuration.api_base_url[:soccer][:api_football_com]}/countries?name=Albania"
+      butler = described_class.get(url: url, sport: :soccer, api_name: :schacka)
+
+      expect(butler).to be_a(Hash)
+      expect(butler['message']).to eq('Invalid Configuration, check empty api_token or empty / invalid api_base_url.')
     end
   end
 
@@ -92,7 +116,7 @@ RSpec.describe Sports::Butler do
       
       butler.countries.by_name(name: 'Albania')
       expect(butler.countries.api.success).to be_falsey
-      expect(butler.countries.api.response[:message]).to eq('Invalid Configuration, check empty api_token or empty / invalid api_base_url!')
+      expect(butler.countries.api.response[:message]).to eq('Invalid Configuration, check empty api_token or empty / invalid api_base_url.')
     end
   end
 end
@@ -103,4 +127,7 @@ def stubs_butler
 
   stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[:soccer][:api_football_com]}/countries?name=Albania")
     .to_return(status: 200, body: get_mocked_response('country.json', :soccer, :api_football_com))
+
+  stub_request(:get, "https://v3.football.api-sports.io/countries?APIkey=my_dummy_token&name=Albania")
+    .to_return(status: 200, body: get_mocked_response('country.json', :soccer, :apifootball_com))
 end
