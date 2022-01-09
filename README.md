@@ -114,7 +114,7 @@ You only need the sport and api_name parameters, currently valid as shown:
         basketball: [:api_basketball_com]
     }
 
-Then you can call the endpoint with required and optional parameters:
+Then you can call the endpoint with required and optional parameters (see list of all available endpoints and methods at the end of this readme):
 
     butler.teams.by_id(id: 1)
     butler.countries.search_by_name(name: 'Germany')
@@ -124,34 +124,38 @@ And you can add additional parameters with filters hash, accordingly to your API
 
     butler.matches.by_competition_and_year(competition_id: 17, year: 2021, filters: { from: '2021-09-01', to: '2021-12-31' })
 
-The result is always the last API object:
+The result is always the last API object (see below).
+
+### Aliases
+
+Some Endpoints provide alias methods, see list of all endpoints below for optional aliases. Example:
+
+    butler.countries.search_by_name(name: 'Germany')
+    butler.areas.search_by_name(name: 'Germany')
 
 ## Usage without endpoint methods (direct calls)
 
-As in footbal butler you may also call the url withs params directly, especially if an endpoint class or method is missing 
-in this gem:
+As in footbal butler gem you may also call the url withs params directly, especially if an endpoint class or method is missing 
+in this gem.
 
-### TODO: configuration not invoked yet!
+You can use the same configuration logic as described above, or deliver required token directly with the call.
 
-Sports::Butler.get(url:, sport: nil, api_name: nil, filters: {}, headers: {})
+When you set the sport and api_name parameter the configuration block will be used (if your configuration is invalid an error message is returned):
 
+    Sports::Butler.get(url: 'https://v3.football.api-sports.io/teams?id=39', sport: :soccer, api_name: :api_football_com)
 
+Or you can provide the token as part of the url:
 
-    TODO: error butler.teams.by_id(id: 1) ???
-    Sports::Butler.get(url: 'https://v3.football.api-sports.io/teams?id=39')
+    Sports::Butler.get(url: 'https://apiv2.apifootball.com/?action=get_teams&team_id=392&APIkey=<YOUR_TOKEN>')
 
-Optional params:
-
-    
-
-Without Configuration of header token, e.g.::
+Or you can provide the token via the headers:
 
     Sports::Butler.get(
         url: 'https://v3.football.api-sports.io/teams?id=39', 
         headers: { "x-apisports-key": '<YOUR_TOKEN>'}
     )
 
-It will always return the HTTParty::Response object, e.g.:
+It will return the HTTParty::Response object, e.g.:
 
     {
         "get"=>"teams",
@@ -193,7 +197,9 @@ List of possible errors from sports butler itself (not from the API):
 
 ## sports butler objects explained
 
-The sports butler object:
+### Sports butler object:
+
+Sports::Butler::Soccer or Sports::Butler::Basketball.
 
 | Attribute | Explanation |
 | ---------------|----------------|
@@ -201,20 +207,37 @@ The sports butler object:
 | **@api_name** | e.g. :api_football_com |
 | **@sport** | e.g. :soccer |
 | **@sport_class** | e.g. SoccerApi |
-| **@available_endpoint** | Show all available endpoints and endpoint methods for this API |
+| **@available_endpoint** | Shows all available endpoints and endpoint methods for this API |
 | **@endpoints** | All pre-build classes for all available endpoint classes |
 
-The endpoint objects:
+### Endpoint objects:
+
+e.g. Sports::Butler::SoccerApi::ApiFootballCom::Teams
 
 | Attribute | Explanation |
 | ---------------|----------------|
-tba
+| **@api_name** | e.g. :api_football_com |
+| **@sport** | e.g. :soccer |
+| **@api** | The API object Sports::Butler::Api |
 
-The API objects
+### API object:
+
+Sports::Butler::Api
 
 | Attribute | Explanation |
 | ---------------|----------------|
-tba
+| **@api_name** | e.g. :api_football_com |
+| **@sport** | e.g. :soccer |
+| **@success** | State of last API call (true or false) |
+| **@response_code** | Response Code of last API call (200 for OK) |
+| **@url** | Used Url of last API call |
+| **@uri** | Used Uri of last API call |
+| **@headers** | Used headers Url of last API call |
+| **@errors** | Array of errors of last API call |
+| **@query** | query params of last API call |
+| **@response** | Array of errors of last API call |
+| **@response** | HTTParty::Response of last API call |
+| **@parsed_response** | parsed_response of last API call |
 
 ## Differences to previous gem football-butler
 
@@ -238,16 +261,59 @@ A short example:
 While football-butler returned a result as a Hash or Array, sports-butler always returns the used API object (see above for more details and explanation), e.g.:
 
     #<Sports::Butler::Api:0x00007f92f5931f40
-        @api_name=:football_data_org,
+        @api_name=:api_football_com,
         @errors=[],
-        @headers={"X-Auth-Token"=>"<YOUR_TOKEN>"},
-        @query={},
-        @response={"message"=>"The resource you are looking for does not exist.", "error"=>404},
-        @response_code=404,
-        @response_processed={"message"=>"The resource you are looking for does not exist."},
+        @headers={"x-apisports-key"=>"<YOUR_TOKEN>"},
+        @parsed_response=
+        {"get"=>"teams",
+        "parameters"=>{"id"=>"1"},
+        "errors"=>[],
+        "results"=>1,
+        "paging"=>{"current"=>1, "total"=>1},
+        "response"=>
+        [{"team"=>
+        {"id"=>1,
+        "name"=>"Belgium",
+        "country"=>"Belgium",
+        "founded"=>1895,
+        "national"=>true,
+        "logo"=>"https://media.api-sports.io/football/teams/1.png"},
+        "venue"=>
+        {"id"=>173,
+        "name"=>"Stade Roi Baudouin",
+        "address"=>"Avenue de Marathon 135/2",
+        "city"=>"Brussel",
+        "capacity"=>50093,
+        "surface"=>"grass",
+        "image"=>"https://media.api-sports.io/football/venues/173.png"}}]},
+        @query={:id=>1},
+        @response=
+        {"get"=>"teams",
+        "parameters"=>{"id"=>"1"},
+        "errors"=>[],
+        "results"=>1,
+        "paging"=>{"current"=>1, "total"=>1},
+        "response"=>
+        [{"team"=>
+        {"id"=>1,
+        "name"=>"Belgium",
+        "country"=>"Belgium",
+        "founded"=>1895,
+        "national"=>true,
+        "logo"=>"https://media.api-sports.io/football/teams/1.png"},
+        "venue"=>
+        {"id"=>173,
+        "name"=>"Stade Roi Baudouin",
+        "address"=>"Avenue de Marathon 135/2",
+        "city"=>"Brussel",
+        "capacity"=>50093,
+        "surface"=>"grass",
+        "image"=>"https://media.api-sports.io/football/venues/173.png"}}]},
+        @response_code=200,
         @sport=:soccer,
-        @success=false,
-        @url="https://api.football-data.org/v2/competitions/31/standings"
+        @success=true,
+        @uri="https://v3.football.api-sports.io/teams?id=1",
+        @url="https://v3.football.api-sports.io/teams"
     >
 
 The configuration also changed to a more complex construct to enable multi-sports, multi-api configuration (see above).

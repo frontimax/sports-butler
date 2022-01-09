@@ -7,7 +7,7 @@ module Sports
     class Api < ApiBase
 
       attr_accessor :response, :parsed_response, :success, :errors, :response_code,
-                    :sport, :api_name, :url, :headers, :query
+                    :sport, :api_name, :url, :headers, :query, :uri
 
       def initialize(sport, api_name)
         @sport    = sport
@@ -31,6 +31,7 @@ module Sports
         @response_code      = response.code
         @success            = true if response_code == 200
         @parsed_response    = process_response(response)
+        @uri                = response.request.last_uri&.to_s
 
         true
       end
