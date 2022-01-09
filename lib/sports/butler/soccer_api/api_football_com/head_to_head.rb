@@ -12,6 +12,10 @@ module Sports
           def path
             'fixtures/headtohead'
           end
+
+          def filters_by_teams(team_id, second_team_id)
+            { h2h: "#{team_id}-#{second_team_id}" }
+          end
         end
       end
     end

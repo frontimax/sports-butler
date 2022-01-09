@@ -8,6 +8,10 @@ module Sports
           def path
             'fixtures/lineups'
           end
+
+          def filters_by_match(id)
+            { fixture: id }
+          end
         end
       end
     end

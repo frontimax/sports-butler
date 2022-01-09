@@ -30,10 +30,6 @@ module Sports
         { id: id }
       end
 
-      def filters_by_teams(team_id, second_team_id)
-        { team_id: team_id, second_team_id: second_team_id }
-      end
-
       def filters_by_team(team_id)
         { team: team_id }
       end

@@ -10,7 +10,7 @@ module Sports
         end
 
         def path
-          :timezones
+          :timezone
         end
       end
     end
