@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Sports data via multiple supported API'
   spec.description   = 'Multiple API Wrapper with endpoint classes for different sports and APIs'
-  spec.homepage      = "https://github.com/frontimax/football-butler"
+  spec.homepage      = "https://github.com/frontimax/sports-butler"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 

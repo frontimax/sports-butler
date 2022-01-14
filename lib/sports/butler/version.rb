@@ -13,6 +13,6 @@ module Sports
     # - https://apifootball.com (>= 1.0.0)
     # - https://www.football-data.org (>= 1.0.0)
     # - https://api-basketball.com (>= 1.0.0)
-    VERSION = "1.0.0"
+    VERSION = "1.0.1"
   end
 end

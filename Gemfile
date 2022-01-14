@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in football-butler.gemspec
+# Specify your gem's dependencies in sports-butler.gemspec
 gemspec
 
 # May 2021: vulnerability Alert Github:
