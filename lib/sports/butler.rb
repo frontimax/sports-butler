@@ -31,8 +31,8 @@ module Sports
       end
 
       # Sports::Butler show all endpoints in console output (info)
-      def show_endpoints
-        Sports::Butler::Utility.endpoints
+      def show_endpoints(dev_mode: false)
+        Sports::Butler::Utility.endpoints(dev_mode: dev_mode)
       end
 
       private

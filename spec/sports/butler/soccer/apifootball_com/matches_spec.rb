@@ -21,13 +21,13 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Matches do
                     :response_matches_all_apifootball_com, :parsed_response
   end
 
-  describe 'when #by_team' do
-    it_behaves_like 'when #by_team', 1,
+  describe 'when #by_team_and_range' do
+    it_behaves_like 'when #by_team_and_range', 1, '2021-01-01', '2021-06-30',
                     :response_matches_all_apifootball_com, :parsed_response
   end
 
-  describe 'when #by_competition' do
-    it_behaves_like 'when #by_competition', 1,
+  describe 'when #by_competition_and_range' do
+    it_behaves_like 'when #by_competition_and_range', 1, '2021-01-01', '2021-06-30',
                     :response_matches_all_apifootball_com, :parsed_response
   end
 end
@@ -36,10 +36,13 @@ def stubs_matches_apifootball_com
   stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&match_id=205430")
     .to_return(status: 200, body: get_mocked_response('match.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&league_id=1&from=2020-01-01&to=2020-12-31")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&from=2021-01-01&league_id=1&to=2021-06-30")
     .to_return(status: 200, body: get_mocked_response('matches.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&team=1")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&from=2020-01-01&league_id=1&to=2020-12-31")
+    .to_return(status: 200, body: get_mocked_response('matches.json', sport, api_name))
+
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&from=2021-01-01&team_id=1&to=2021-06-30")
     .to_return(status: 200, body: get_mocked_response('matches.json', sport, api_name))
 
   stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_events&league_id=1")

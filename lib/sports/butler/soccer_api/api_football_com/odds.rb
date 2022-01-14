@@ -5,10 +5,6 @@ module Sports
     module SoccerApi
       module ApiFootballCom
         class Odds < Sports::Butler::SoccerApi::Odds
-          def available_endpoint_methods
-            [:by_match]
-          end
-
           def path
             :odds
           end

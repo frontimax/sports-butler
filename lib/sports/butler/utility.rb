@@ -9,7 +9,7 @@ module Sports
     class Utility
 
       class << self
-        def endpoints
+        def endpoints(dev_mode: false)
           linebreak
 
           Configuration::AVAILABLE_SPORT_API.each.with_index(1) do |(sport, api_names), idx|
@@ -18,7 +18,8 @@ module Sports
             puts "==============================\n"
             puts "Endpoints for this Sport:\n\n"
 
-            "Sports::Butler::#{sport.to_s.capitalize}::ENDPOINTS".constantize.each.with_index(1) do |endpoint, idx_endpoint|
+            all_endpoints = "Sports::Butler::#{sport.to_s.capitalize}::ENDPOINTS".constantize
+            all_endpoints.sort.each.with_index(1) do |endpoint, idx_endpoint|
               row_hash = {}
               row_hash[:available_endpoint_methods] = []
               rows_apis = []
@@ -29,6 +30,10 @@ module Sports
               # get all methods from all apis
               api_names.each.with_index(1) do |api_name, _idx_api_name|
                 butler = Sports::Butler.new(sport: sport, api_name: api_name)
+                if dev_mode && !butler.valid_configuration
+                  print red, "\nINVALID CONFIGURATION for #{sport}.#{api_name} - skipping ...\n"
+                  next
+                end
 
                 next unless butler.available_endpoints.include?(endpoint.to_s)
                 available_endpoint_methods = butler.send(endpoint).available_endpoint_methods
@@ -43,8 +48,12 @@ module Sports
               row_hash[:available_endpoint_methods].each.with_index(1) do |available_endpoint_method, idx_available|
                 yes_no = []
                 meth_params = []
-                api_names.each.with_index(1) do |api_name, idx_api_name|
+                api_names.each.with_index(1) do |api_name, _idx_api_name|
                   butler = Sports::Butler.new(sport: sport, api_name: api_name)
+                  if dev_mode && !butler.valid_configuration
+                    print red, "\nINVALID CONFIGURATION for #{sport}.#{api_name} - skipping ...\n"
+                    next
+                  end
 
                   next unless butler.available_endpoints.include?(endpoint.to_s)
                   available_endpoint_methods = butler.send(endpoint).available_endpoint_methods
@@ -54,6 +63,26 @@ module Sports
 
                   if available_endpoint_methods.include?(available_endpoint_method)
                     params = butler.send(endpoint).method(available_endpoint_method).parameters
+
+                    if dev_mode
+                      required = params.select{ |param| param.first == :keyreq }
+                      cmd_string = "butler.#{endpoint}.#{available_endpoint_method}(#{required.map{ |key_req| "#{key_req.second}: 111" }.join(', ')})"
+                      cmd_string += ".success"
+                      print white, cmd_string
+
+                      success =  eval(cmd_string)
+                      if success
+                        print green, "\nSUCCESS > #{sport}.#{api_name}\n"
+                      else
+                        api = eval("butler.#{endpoint}.api")
+                        if  api.parsed_response.is_a?(Hash) && api.response.dig('message')
+                          print yellow, "\nSUCCESS with error message> #{sport}.#{api_name}: #{api.response['message']}\n"
+                        else
+                          print red, "\nFAILED! > #{sport}.#{api_name}: #{api.response_code} > #{api.uri}\n"
+                        end
+                      end
+                    end
+
                     res = params.present? ? params : 'none'
                     meth_params << res
                   else
@@ -70,7 +99,7 @@ module Sports
               table.title = "Endpoint #{endpoint} [#{sport}]"
               table.headings = ['Method'] + rows_apis
 
-              print magenta, table
+              print magenta, table unless dev_mode
 
               linebreak
               linebreak

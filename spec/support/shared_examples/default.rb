@@ -75,15 +75,21 @@ shared_examples 'when #by_match_array' do |match_id, compare, mode = :response|
                   mode: mode
 end
 
-shared_examples 'when #by_match_with_range' do |match_id, from, to, compare, mode = :response|
-  it_behaves_like 'when endpoint method', compare: compare, meth: :by_match_with_range,
-                  params: { match_id: match_id, from: from, to: to },
-                  mode: mode
-end
-
 shared_examples 'when #by_team' do |team_id, compare, mode = :response|
   it_behaves_like 'when endpoint method', compare: compare, meth: :by_team,
                   params: { team_id: team_id },
+                  mode: mode
+end
+
+shared_examples 'when #by_team_and_range' do |team_id, from, to, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_team_and_range,
+                  params: { team_id: team_id, from: from, to: to },
+                  mode: mode
+end
+
+shared_examples 'when #by_competition_and_range' do |competition_id, from, to, compare, mode = :response|
+  it_behaves_like 'when endpoint method', compare: compare, meth: :by_competition_and_range,
+                  params: { competition_id: competition_id, from: from, to: to },
                   mode: mode
 end
 

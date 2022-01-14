@@ -130,6 +130,22 @@ module Sports
           api
         end
 
+        def by_team_and_range(team_id:, from:, to:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!({ team_id: team_id, from: from, to: to })
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
+        def by_competition_and_range(competition_id:, from:, to:, filters: {})
+          return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
+
+          filters.merge!(filters_by_competition_and_range(competition_id, from, to))
+          api.get(path: build_path(path), filters: filters)
+          api
+        end
+
         def by_season(season:, filters: {})
           return error_missing_endpoint_method(__method__) unless available_endpoint_methods.include?(__method__)
 

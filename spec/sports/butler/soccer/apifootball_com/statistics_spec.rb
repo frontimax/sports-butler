@@ -18,7 +18,7 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Statistics do
 end
 
 def stubs_statistics_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_statistics&id=86392")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_statistics&match_id=86392")
     .to_return(status: 200, body: get_mocked_response('statistics.json', sport, api_name))
 end
 

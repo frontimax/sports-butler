@@ -59,7 +59,7 @@ module Sports
         glob(File.expand_path("../basketball_api/api_basketball_com/*.rb", __FILE__))
 
       attr_accessor :sport, :api_name, :api_class, :sport_class,
-                    :endpoints, :available_endpoints
+                    :endpoints, :available_endpoints, :valid_configuration
 
       def initialize(sport:, api_name:)
         @sport        = sport
@@ -70,6 +70,7 @@ module Sports
         @endpoints    = {}
 
         @available_endpoints  = get_available_endpoints
+        @valid_configuration  = !Configuration.invalid_config?(sport, api_name)
       end
 
       def method_missing(method, *args, &block)

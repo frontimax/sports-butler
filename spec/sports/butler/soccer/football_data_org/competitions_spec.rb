@@ -20,7 +20,7 @@ RSpec.describe Sports::Butler::SoccerApi::FootballDataOrg::Competitions do
   end
 
   describe 'when #by_id' do
-    it_behaves_like 'when #by_id', 78,
+    it_behaves_like 'when #by_id', 2002,
                     :response_competitions_one_football_data_org, :stringify_keys
   end
 end
@@ -29,7 +29,7 @@ def stubs_competitions_football_data_org
   stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions")
     .to_return(status: 200, body: get_mocked_response('competitions.json', sport, api_name))
 
-  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions/78")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/competitions/2002")
     .to_return(status: 200, body: get_mocked_response('competition.json', sport, api_name))
 end
 

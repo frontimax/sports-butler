@@ -11,18 +11,14 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Odds do
     stubs_odds_apifootball_com
   end
 
-  describe 'when #by_match_with_range' do
-    it_behaves_like 'when #by_match_with_range', 86392, '2021-05-22', '2021-05-22',
-                    :response_odds_all_apifootball_com, :parsed_response
-  end
-
   describe 'when #by_match' do
-    it_behaves_like 'when error_missing_endpoint', :by_match, { match_id: 86392 }
+    it_behaves_like 'when #by_match_array', 86392,
+                    :response_odds_all_apifootball_com, :parsed_response
   end
 end
 
 def stubs_odds_apifootball_com
-  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_odds&match_id=86392&from=2021-05-22&to=2021-05-22")
+  stub_request(:get, "#{Sports::Butler::Configuration.api_base_url[sport][api_name]}/?APIkey=my_dummy_token&action=get_odds&match_id=86392")
     .to_return(status: 200, body: get_mocked_response('odds.json', sport, api_name))
 end
 

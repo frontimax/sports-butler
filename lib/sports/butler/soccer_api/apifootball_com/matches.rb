@@ -6,7 +6,7 @@ module Sports
       module ApifootballCom
         class Matches < Sports::Butler::SoccerApi::Matches
           def available_endpoint_methods
-            [:by_id, :by_competition_and_year, :by_team, :by_competition]
+            [:by_id, :by_competition_and_year, :by_team_and_range, :by_competition_and_range]
           end
 
           def build_path(action)
@@ -29,8 +29,8 @@ module Sports
             { match_id: id }
           end
 
-          def filters_by_competition(id)
-            { league_id: id }
+          def filters_by_competition_and_range(competition_id, from, to)
+            { league_id: competition_id, from: from, to: to }
           end
         end
       end

@@ -5,10 +5,6 @@ module Sports
     module SoccerApi
       module FootballDataOrg
         class Odds < Sports::Butler::SoccerApi::Odds
-          def available_endpoint_methods
-            [:by_match]
-          end
-
           def by_match(match_id:, filters: {})
             api.get(path: "#{path}/#{match_id}", filters: filters)
             response = api.response.parsed_response

@@ -83,7 +83,7 @@ This is a complete config example for all 4 supported APIs (2 sports):
         # soccer
         config.api_base_url[:soccer][:api_football_com]  = 'https://v3.football.api-sports.io'
         config.api_base_url[:soccer][:football_data_org] = 'https://api.football-data.org/v2'
-        config.api_base_url[:soccer][:apifootball_com]   = 'https://apiv2.apifootball.com'
+        config.api_base_url[:soccer][:apifootball_com]   = 'https://apiv3.apifootball.com'
         # basketball
         config.api_base_url[:basketball][:api_basketball_com]   = 'https://v1.basketball.api-sports.io'
     end
@@ -93,9 +93,9 @@ Configuration explained:
 | Attribute | Explanation |
 | ---------------|----------------|
 | **@api_token # default_api_hash # { soccer: {}, basketball: {} }** | The API Token is provided by your API Host.As this is a multiple sports multiple API Gem you have to fill the Hash accordingly. At least one api token for one API is required. |
-| **@api_base_url # default_api_hash # { soccer: {}, basketball: {} }** | The API base url is provided by your API Host. As this is a multiple sports multiple API Gem you have to fill the Hash accordingly. At least one api token for one API is required. |
-| **@header_token_name # set_header_token_name** | Default header token setting. Can be overwritten. |
-| **@header_additional # {}** | Additional (optional) header key/value pairs to be added. |
+| **@api_base_url # default_api_hash # { soccer: {}, basketball: {} }** | The API base url is provided by your API Host. As this is a multiple sports multiple API Gem you have to fill the Hash accordingly. At least one base url for one API is required. |
+| **@header_token_name # set_header_token_name** | Default header API token setting for supported APIs. Can be overwritten. |
+| **@header_additional # {}** | Additional (optional) header key/value pairs to be added (e.g. for API Tokens. |
 
 
 ## Usage
@@ -135,7 +135,7 @@ Some Endpoints provide alias methods, see list of all endpoints below for option
 
 ## Usage without endpoint methods (direct calls)
 
-As in footbal butler gem you may also call the url withs params directly, especially if an endpoint class or method is missing 
+As in footbal butler gem you may also call a url with params directly, useful especially if an endpoint class or method is missing 
 in this gem.
 
 You can use the same configuration logic as described above, or deliver required token directly with the call.
@@ -327,7 +327,9 @@ You can list all endpoints with:
 
 Overview of all endpoints (and its optional aliases) of all sports and its APIs with required (:keyreq) and optional (:key) parameters:
 
-**Note: The list of endpoints may not be complete, I gladly add new endpoints if you require them from your API. PLease drop me a message.**
+**Note: The list of endpoints may not be complete, I gladly add new endpoints if you require them from your API. Please contact me via info@code-butler.de.**
+
+**Also: If you find an eror in this gem I am happy to fix it as soon as possible. Please contact me via info@code-butler.de.**
 
 <pre>
 1. SPORT: soccer

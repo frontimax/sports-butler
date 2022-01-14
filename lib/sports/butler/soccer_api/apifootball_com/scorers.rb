@@ -16,6 +16,10 @@ module Sports
           def build_path(action)
             "action=#{action}"
           end
+
+          def filters_by_competition(id)
+            { league_id: id }
+          end
         end
       end
     end

@@ -15,6 +15,10 @@ RSpec.describe Sports::Butler::SoccerApi::ApifootballCom::Teams do
     it_behaves_like 'when #by_id', 2611,
                     :response_team_one_apifootball_com, :parsed_response
   end
+
+  describe 'when #by_name' do
+    it_behaves_like 'when error_missing_endpoint', :by_name, { name: 'Leicester' }
+  end
 end
 
 def stubs_teams_apifootball_com
