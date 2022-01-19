@@ -21,7 +21,7 @@ RSpec.describe Sports::Butler do
     end
 
     it "returns current version #{Sports::Butler::VERSION}" do
-      expect(Sports::Butler::VERSION).to eq('1.0.2')
+      expect(Sports::Butler::VERSION).to eq('1.1.0')
     end
   end
 

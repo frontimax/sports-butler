@@ -236,7 +236,6 @@ Sports::Butler::Api
 | **@headers** | Used headers Url of last API call |
 | **@errors** | Array of errors of last API call |
 | **@query** | query params of last API call |
-| **@response** | Array of errors of last API call |
 | **@response** | HTTParty::Response of last API call |
 | **@parsed_response** | parsed_response of last API call |
 
